@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "fbe89fdb-218f-4d15-9992-65ce801a5ef2": {
+      "ProjectGuid": "fbe89fdb-218f-4d15-9992-65ce801a5ef2",
+      "DisplayName": "BankKazungV2.Shared",
+      "ColorIndex": 0
+    },
+    "a52e1b97-9101-4476-b34c-b6746acc9a64": {
+      "ProjectGuid": "a52e1b97-9101-4476-b34c-b6746acc9a64",
+      "DisplayName": "BankKazungV2.Server",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "7aea33c2-33d7-427e-a2bd-d94d323780c0": {
+      "ProjectGuid": "7aea33c2-33d7-427e-a2bd-d94d323780c0",
+      "DisplayName": "BankKazungV2.Client",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

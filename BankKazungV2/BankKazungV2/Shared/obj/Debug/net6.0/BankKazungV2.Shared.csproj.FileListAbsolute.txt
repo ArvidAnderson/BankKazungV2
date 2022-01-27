@@ -1,0 +1,12 @@
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Shared\bin\Debug\net6.0\BankKazungV2.Shared.deps.json
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Shared\bin\Debug\net6.0\BankKazungV2.Shared.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Shared\bin\Debug\net6.0\ref\BankKazungV2.Shared.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Shared\bin\Debug\net6.0\BankKazungV2.Shared.pdb
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Shared\obj\Debug\net6.0\BankKazungV2.Shared.csproj.AssemblyReference.cache
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Shared\obj\Debug\net6.0\BankKazungV2.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Shared\obj\Debug\net6.0\BankKazungV2.Shared.AssemblyInfoInputs.cache
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Shared\obj\Debug\net6.0\BankKazungV2.Shared.AssemblyInfo.cs
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Shared\obj\Debug\net6.0\BankKazungV2.Shared.csproj.CoreCompileInputs.cache
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Shared\obj\Debug\net6.0\BankKazungV2.Shared.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Shared\obj\Debug\net6.0\ref\BankKazungV2.Shared.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Shared\obj\Debug\net6.0\BankKazungV2.Shared.pdb
