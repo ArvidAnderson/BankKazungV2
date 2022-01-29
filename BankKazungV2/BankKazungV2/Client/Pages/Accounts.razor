@@ -1,0 +1,47 @@
+﻿@page "/accounts"
+@using BankKazungV2.Shared.Models
+@inject HttpClient Http
+
+<PageTitle>Accounts</PageTitle>
+
+<h1>All accounts</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (accounts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Account ID</th>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var account in accounts)
+            {
+                <tr>
+                    <td>@account.AccountID</td>
+                    <td>@account.UserID</td>
+                    <td>@account.Name</td>
+                    <td>@account.Balance</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Account[]? accounts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        accounts = await Http.GetFromJsonAsync<Account[]>("api/accounts");
+    }
+}

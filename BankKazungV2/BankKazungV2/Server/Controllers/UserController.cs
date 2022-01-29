@@ -16,11 +16,24 @@ namespace BankKazungV2.Server.Controllers
         {
             _context = context;
         }
+
+        [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
-            var context = _context;
-            var users = await context.Users.ToListAsync();
+            var users = await _context.Users.ToListAsync();
             return Ok(users);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUser(int id)
+        {
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.UserID == id);
+            if(user == null)
+            {
+                return NotFound($"No User with UserID {id} was found");
+            }
+            return Ok(user);
         }
     }
 }

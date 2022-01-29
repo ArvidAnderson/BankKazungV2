@@ -1,12 +1,13 @@
 ﻿@page "/users"
 @using BankKazungV2.Shared.Models
 @inject HttpClient Http
+@inject NavigationManager NavigationManager
 
 <PageTitle>Users</PageTitle>
 
 <h1>All Users</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<button class="btn btn-primary p-1">Add User</button>
 
 @if (users == null)
 {
@@ -14,19 +15,22 @@
 }
 else
 {
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email Adress</th>
-                <th>Age</th>
+                <th scope="col">User ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email Adress</th>
+                <th scope="col">Age</th>
+                
             </tr>
         </thead>
         <tbody>
             @foreach (var user in users)
             {
-                <tr>
+                <tr @onclick="(() => GetSingleUser(user.UserID))">
+                    <td>@user.UserID</td>
                     <td>@user.FirstName</td>
                     <td>@user.LastName</td>
                     <td>@user.Email</td>
@@ -42,6 +46,11 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        users = await Http.GetFromJsonAsync<User[]>("api/user");
+        users = await Http.GetFromJsonAsync<User[]>("api/User");
+    }
+
+    private void GetSingleUser(int UserID)
+    {
+        NavigationManager.NavigateTo($"/user/{UserID}");
     }
 }
