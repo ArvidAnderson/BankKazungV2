@@ -29,7 +29,7 @@ else
         <tbody>
             @foreach (var user in users)
             {
-                <tr @onclick="(() => GetSingleUser(user.UserID))">
+                <tr @onclick="(() => EditUser(user.UserID))">
                     <td>@user.UserID</td>
                     <td>@user.FirstName</td>
                     <td>@user.LastName</td>
@@ -40,16 +40,22 @@ else
         </tbody>
     </table>
 }
+@if(editUserOpen == true)
+{
+    <EditUser></EditUser>    
+}
+
 
 @code {
     private User[]? users;
+    private bool editUserOpen = false;
 
     protected override async Task OnInitializedAsync()
     {
         users = await Http.GetFromJsonAsync<User[]>("api/User");
     }
 
-    private void GetSingleUser(int UserID)
+    private void EditUser(int UserID)
     {
         NavigationManager.NavigateTo($"/user/{UserID}");
     }

@@ -35,5 +35,21 @@ namespace BankKazungV2.Server.Controllers
             }
             return Ok(user);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(User user, int id)
+        {
+            var dbuser = await _context.Users
+                .FirstOrDefaultAsync(u => u.UserID == id);
+            dbuser.FirstName = user.FirstName;
+            dbuser.LastName = user.LastName;
+            dbuser.Email = user.Email;
+            dbuser.Age = user.Age;
+            dbuser.Phone = user.Phone;
+            
+            _context.SaveChanges();
+
+            return Ok(dbuser);
+        }
     }
 }

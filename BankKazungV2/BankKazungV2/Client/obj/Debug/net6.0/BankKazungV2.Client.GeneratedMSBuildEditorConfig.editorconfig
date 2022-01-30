@@ -34,6 +34,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/arvid/Documents/GitHub/BankKazungV2/BankKazungV2/BankKazungV2/Client/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/arvid/Documents/GitHub/BankKazungV2/BankKazungV2/BankKazungV2/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -42,8 +46,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arvid/Documents/GitHub/BankKazungV2/BankKazungV2/BankKazungV2/Client/Pages/UserSingle.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclNpbmdsZS5yYXpvcg==
+[C:/Users/arvid/Documents/GitHub/BankKazungV2/BankKazungV2/BankKazungV2/Client/Shared/EditUser.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEVkaXRVc2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/arvid/Documents/GitHub/BankKazungV2/BankKazungV2/BankKazungV2/Client/Shared/SurveyPrompt.razor]
