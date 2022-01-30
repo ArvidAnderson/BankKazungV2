@@ -279,3 +279,9 @@ C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\bi
 C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\bin\Debug\net6.0\runtimes\win-arm\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\bin\Debug\net6.0\runtimes\win-arm64\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\bin\Debug\net6.0\Microsoft.AspNetCore.Components.Authorization.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\obj\Debug\net6.0\BankKazungV2.Server.MvcApplicationPartsAssemblyInfo.cs

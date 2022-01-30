@@ -15,11 +15,14 @@ namespace BankKazungV2.Server.Migrations
                 {
                     UserID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(254)", maxLength: 254, nullable: false),
+                    Phone = table.Column<string>(type: "varchar(50)", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Password = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
+                    Salt = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,7 +36,7 @@ namespace BankKazungV2.Server.Migrations
                     AccountID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserID = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Balance = table.Column<decimal>(type: "decimal(19,4)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -55,7 +58,7 @@ namespace BankKazungV2.Server.Migrations
                     CardID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserID = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false),
                     Balance = table.Column<decimal>(type: "decimal(19,4)", nullable: false),
                     CreditLimit = table.Column<decimal>(type: "decimal(19,4)", nullable: false),
@@ -81,10 +84,11 @@ namespace BankKazungV2.Server.Migrations
                     Type = table.Column<int>(type: "int", nullable: false),
                     TransactionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(19,4)", nullable: false),
-                    SenderAccountID = table.Column<int>(type: "int", nullable: false),
-                    ReciverAccountID = table.Column<int>(type: "int", nullable: false),
-                    SenderCardID = table.Column<int>(type: "int", nullable: false),
-                    ReciverCardID = table.Column<int>(type: "int", nullable: false),
+                    SenderAccountID = table.Column<int>(type: "int", nullable: true),
+                    ReciverAccountID = table.Column<int>(type: "int", nullable: true),
+                    Message = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    SenderCardID = table.Column<int>(type: "int", nullable: true),
+                    ReciverCardID = table.Column<int>(type: "int", nullable: true),
                     AccountID = table.Column<int>(type: "int", nullable: true),
                     CardID = table.Column<int>(type: "int", nullable: true)
                 },
@@ -122,6 +126,12 @@ namespace BankKazungV2.Server.Migrations
                 name: "IX_Transactions_CardID",
                 table: "Transactions",
                 column: "CardID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

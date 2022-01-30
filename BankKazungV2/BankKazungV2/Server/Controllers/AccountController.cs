@@ -17,6 +17,7 @@ namespace BankKazungV2.Server.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public async Task<IActionResult> GetAccounts()
         {
             var accounts = await _context.Accounts.ToListAsync();

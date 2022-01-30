@@ -9,6 +9,7 @@
     "assembly": {
       "Microsoft.AspNetCore.Authorization.dll": "sha256-hGbT4jDhpi63093bjGt+4XVJ3Z9t1FVbmgNmYYmpiNY=",
       "Microsoft.AspNetCore.Components.dll": "sha256-NJ2GmZOAzlolS7ZPvt5guh86ICBupqwCNK0ygg7fkhE=",
+      "Microsoft.AspNetCore.Components.Authorization.dll": "sha256-JE3kRVO7ej\/zCUUshzEyxzoY+yl8N\/AdGAX9tVpcNGA=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-YEcUfJbV\/+SrxppUEKn5jqOg8WptBrdAGaDG+psN8Yg=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-aq+IFhf0HZZKVz6P\/GhuaY0UvXsguM0h5hlYrzAfugk=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-zARafz0vNUQ9qVFCoQO3oQSP+VMitM2+PZs+2OkxMgE=",
@@ -196,15 +197,15 @@
       "mscorlib.dll": "sha256-D\/B7fx+JRbK7Nl8yWAODxeHUHlLbvsWdDAEes5MDIyw=",
       "netstandard.dll": "sha256-1nMAQ0QEpq5opAgJ9ulKwzJ99J7j6FOhdPcTaCZTzzw=",
       "System.Private.CoreLib.dll": "sha256-9T5MVQHJaduOMTxFnxLK8+8kY2JFN\/5SyO73e1eZlsU=",
-      "BankKazungV2.Shared.dll": "sha256-yalzduAnQrVfoERWVaiZ0Fm15soK6tYe233yTlaW048=",
-      "BankKazungV2.Client.dll": "sha256-jSzhL422hD05zr\/DbOVbhZGR9GvQW4S0wWoapDepPaY="
+      "BankKazungV2.Shared.dll": "sha256-BRrY0g6TlRW+zUG7TNLyJb4L5S4Wkx9eiIpMCn1D+Tc=",
+      "BankKazungV2.Client.dll": "sha256-ae7dT3GLv3vAECsl\/gXCkFy431ROm5iUqwZspV2DXtM="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "BankKazungV2.Shared.pdb": "sha256-\/Gi+eTotCDNFRfuDaTKFxDVjY5sJ200xRxt3Hr6PH+A=",
-      "BankKazungV2.Client.pdb": "sha256-CVdGT2oaCaVegUuLkcX3qCrMC8HpmLP0DNrbE+SIuZg="
+      "BankKazungV2.Shared.pdb": "sha256-UsBhK7lCN3bY46jnwU2twfWB4rnGrDCdf+BRKBi22As=",
+      "BankKazungV2.Client.pdb": "sha256-R5uES1Sfz0RKk3fPDwM2WcOxiXSSTMNRSsAs6vaY86M="
     },
     "runtime": {
       "dotnet.6.0.1.ynjylm5yl3.js": "sha256-9PASdETeWhfCtXSYFC6rggJeldu\/lkBddQzLbZU3sZY=",

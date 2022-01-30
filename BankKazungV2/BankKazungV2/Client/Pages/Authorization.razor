@@ -1,0 +1,16 @@
+﻿@page "/authorize"
+
+<h3>Authorization</h3>
+
+<AuthorizeView>
+    <Authorized>
+        <span>You are authorized as @context.User.Identity.Name</span>
+    </Authorized>
+    <NotAuthorized>
+        <span>You are not authorized!</span>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+
+}

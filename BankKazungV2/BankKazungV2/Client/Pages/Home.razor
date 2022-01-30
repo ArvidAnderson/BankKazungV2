@@ -1,19 +1,47 @@
 ﻿@page "/home"
+@attribute [Authorize]
+@using BankKazungV2.Shared.Models
 
 <div class="container">
-  <div class="row">
-    <div class="col-sm">
-      Welcome {username}
+    <div class="card">
+        <div class="card-body">
+            Welcome {FirstName} {LastName}
+        </div>
     </div>
-    <div class="col-sm">
-      One of three columns
+</div>
+<div class="m-3"></div>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h4>Accounts</h4>
+        </div>
+        <div class="card-body">
+            <div class="card">
+                <div class="card-body">
+                    <p>Account</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-sm">
-      One of three columns
+</div>
+<div class="m-3"></div>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h4>Cards</h4>
+        </div>
+        <div class="card-body">
+            <div class="card">
+                <div class="card-body">
+                    <p>Card</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+
 </div>
 
 @code {
-
+    private Account[]? accounts;
+    private Card[]? cards;
 }

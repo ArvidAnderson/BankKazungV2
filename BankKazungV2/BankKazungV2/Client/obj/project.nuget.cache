@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "eq1cRac7y7jA8Ak6LK60iJX7k8SB5RDBGOfIl7/OXSAsfHh9tOYGjJGOHJVwmr/OxGUjvtDPgqj0Dd/moRnU4A==",
+  "dgSpecHash": "9nqJcsP1ZYzsTLK0MiwrSDeJRdgCzVcoFCuEWs2UcTNWN+2TB4cfY/vyM61/jDITDWHFYTChe7XN5tlPbdH71Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\BankKazungV2.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.1\\microsoft.aspnetcore.authorization.6.0.1.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.aspnetcore.components\\6.0.1\\microsoft.aspnetcore.components.6.0.1.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\6.0.1\\microsoft.aspnetcore.components.analyzers.6.0.1.nupkg.sha512",
+    "C:\\Users\\arvid\\.nuget\\packages\\microsoft.aspnetcore.components.authorization\\6.0.1\\microsoft.aspnetcore.components.authorization.6.0.1.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\6.0.1\\microsoft.aspnetcore.components.forms.6.0.1.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.aspnetcore.components.web\\6.0.1\\microsoft.aspnetcore.components.web.6.0.1.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\6.0.1\\microsoft.aspnetcore.components.webassembly.6.0.1.nupkg.sha512",

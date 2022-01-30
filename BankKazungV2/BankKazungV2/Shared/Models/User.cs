@@ -21,10 +21,8 @@ namespace BankKazungV2.Shared.Models
         public string Phone { get; set; } = string.Empty;
         public int Age { get; set; }
         public DateTime CreatedAt { get; set; }
-        [MaxLength(128)]
-        public string Password { get; set; } = string.Empty;
-        [MaxLength(128)]
-        public string Salt { get; set; } = string.Empty;
+        public byte[] Password { get; set; }
+        public byte[] Salt { get; set; }
         public List<Card> Cards { get; set; } = new List<Card>();
         public List<Account> Accounts { get; set; } = new List<Account>();
     }
