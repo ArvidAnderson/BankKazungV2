@@ -825,3 +825,7 @@ C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Client\bi
 C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Client\bin\Debug\net6.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.dll.gz
 C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Client\bin\Debug\net6.0\Microsoft.AspNetCore.Components.Authorization.dll
 C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Client\obj\Debug\net6.0\build-gz\FsJhNWh7.gz
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Client\bin\Debug\net6.0\wwwroot\_framework\Blazored.LocalStorage.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Client\bin\Debug\net6.0\wwwroot\_framework\Blazored.LocalStorage.dll.gz
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Client\bin\Debug\net6.0\Blazored.LocalStorage.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Client\obj\Debug\net6.0\build-gz\724G8TgK.gz

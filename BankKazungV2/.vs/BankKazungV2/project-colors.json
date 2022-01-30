@@ -20,7 +20,12 @@
       "ProjectGuid": "7aea33c2-33d7-427e-a2bd-d94d323780c0",
       "DisplayName": "BankKazungV2.Client",
       "ColorIndex": 2
+    },
+    "919fd655-f067-4ba2-b932-d926e85dd6b4": {
+      "ProjectGuid": "919fd655-f067-4ba2-b932-d926e85dd6b4",
+      "DisplayName": "Script Documents",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 4
 }

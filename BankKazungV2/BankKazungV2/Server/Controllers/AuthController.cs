@@ -1,12 +1,12 @@
 ﻿using BankKazungV2.Server.Data;
-using BankKazungV2.Server.Models;
 using BankKazungV2.Shared.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using BankKazungV2.Shared.DataTransferObjects;
+using System.Text;
 
 namespace BankKazungV2.Server.Controllers
 {
@@ -72,20 +72,19 @@ namespace BankKazungV2.Server.Controllers
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, _user.FirstName),
-                new Claim(ClaimTypes.Surname, _user.LastName)
+                new Claim(ClaimTypes.NameIdentifier, _user.UserID.ToString()),
             };
 
-            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(
-                claims: claims,
-                expires: DateTime.Now.AddDays(5),
-                signingCredentials: creds
-            );
-
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-
-            return jwt;
+                _configuration["Jwt:Issuer"],
+                _configuration["Jwt:Audience"],
+                claims,
+                expires: DateTime.UtcNow.AddMinutes(10),
+                signingCredentials: signIn);
+            
+            return new JwtSecurityTokenHandler().WriteToken(token);
         } 
 
         [NonAction]

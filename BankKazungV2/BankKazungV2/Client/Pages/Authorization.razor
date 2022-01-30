@@ -1,16 +1,76 @@
 ﻿@page "/authorize"
+@using BankKazungV2.Shared.DataTransferObjects
+@using System.Net
+@inject HttpClient Http
+@inject AuthenticationStateProvider AuthStateProvider
+@inject ILocalStorageService LocalStorage
 
-<h3>Authorization</h3>
-
-<AuthorizeView>
+<AuthorizeView Context="Auth">
     <Authorized>
-        <span>You are authorized as @context.User.Identity.Name</span>
+        <h1>You are already authorized as @Auth.User.Identity.Name</h1>
     </Authorized>
     <NotAuthorized>
-        <span>You are not authorized!</span>
+        <h3>Authorization</h3>
+
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Register</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                @if(selectedView == "Login")
+                {
+                    <EditForm Model="loginUser" OnSubmit="HandleLogin">
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <InputText class="form-control" id="Email" @bind-Value="loginUser.Email"></InputText>
+                        </div>
+                        <div class="form-group">
+                            <label for="Password">Password</label>
+                            <InputText type="password" class="form-control" id="Password" @bind-Value="loginUser.Password"></InputText>
+                        </div>
+                        <div class="form-group mt-1">
+                            <button class="btn btn-primary" type="submit">Login</button>
+                        </div>
+                    </EditForm>
+                }
+                @if(selectedView == "Register")
+                {
+                    <h1>Register</h1>
+                }
+            </div>
+        </div>
     </NotAuthorized>
 </AuthorizeView>
 
-@code {
 
+@code {
+    UserLogin loginUser = new UserLogin();
+
+    private async void HandleLogin()
+    {
+        var result = await Http.PostAsJsonAsync("api/Auth/login", loginUser);
+        if(result.StatusCode == HttpStatusCode.OK)
+        {
+            var token = await result.Content.ReadAsStringAsync();
+            await LocalStorage.SetItemAsync("token", token);
+            await AuthStateProvider.GetAuthenticationStateAsync(); 
+        } else
+        {
+            Console.WriteLine("Wrong Credentials");
+        }
+    }
+
+    private string selectedView = "Login";
+
+    private void setSelectedView(string _view)
+    {
+        selectedView = _view;
+    }
 }

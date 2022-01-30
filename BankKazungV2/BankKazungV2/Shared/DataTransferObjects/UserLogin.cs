@@ -1,4 +1,4 @@
-﻿namespace BankKazungV2.Server.Models
+﻿namespace BankKazungV2.Shared.DataTransferObjects
 {
     public class UserLogin
     {
