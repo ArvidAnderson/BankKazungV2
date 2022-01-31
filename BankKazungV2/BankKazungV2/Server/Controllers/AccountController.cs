@@ -32,6 +32,27 @@ namespace BankKazungV2.Server.Controllers
             return Ok(UserAccounts);
         }
 
+        [HttpGet("jwt/get/account"), Authorize]
+        public async Task<ActionResult<Account>> GetAccountByJWT(int _accountID)
+        {
+            var Token = await HttpContext.GetTokenAsync("access_token");
+            var UserID = JwtHelper.DecodeUserIDFromToken(Token);
+
+            var account = await _context.Accounts.SingleOrDefaultAsync(a => a.AccountID == _accountID);
+            
+            if(account == null)
+            {
+                return NotFound("Account Not Found");
+            }
+
+            if(account.UserID == UserID)
+            {
+                return Ok(account);
+            }
+
+            return BadRequest("Error Getting Account: !Permission");
+        }
+
         [HttpPost("jwt/add/account"), Authorize]
         public async Task<ActionResult<Account>> AddAccountByJWT(string _name)
         {
@@ -58,7 +79,7 @@ namespace BankKazungV2.Server.Controllers
 
             if(accountToDelete == null)
             {
-                return BadRequest("Account Not Found");
+                return NotFound("Account Not Found");
             }
 
             if(accountToDelete.UserID == UserID)
@@ -69,7 +90,6 @@ namespace BankKazungV2.Server.Controllers
             }
 
             return BadRequest("Error Deleting Account: !Permission");
-
         }
     }
 }

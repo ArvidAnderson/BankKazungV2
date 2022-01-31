@@ -1,11 +1,12 @@
 ﻿@page "/home"
 @attribute [Authorize]
+@inject HttpClient Http
 @using BankKazungV2.Shared.Models
 
 <AuthorizeView Context="Auth">
     <div class="container">
         <div class="alert alert-secondary">
-            <h5>Welcome @Auth.User.Identity.Name</h5>
+            <h5>Welcome {FirstName} {LastName}</h5>
         </div>
     </div>
     <div class="m-3"></div>
@@ -15,11 +16,33 @@
                 <h4>Accounts</h4>
             </div>
             <div class="card-body">
-                <div class="card">
-                    <div class="card-body">
-                        <p>Account</p>
+                @if(accounts == null)
+                {
+                    <div class="container-fluid d-flex align-items-center justify-content-center">
+                        <p>Loading...</p>
                     </div>
-                </div>
+                }
+                @if(accounts != null)
+                {
+                    <table class="table table-hover">
+                        <thead class="">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Balance</th>
+                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var account in accounts)
+                            {
+                                <tr>
+                                    <td>@account.Name</td>
+                                    <td>@account.Balance</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>   
+                }
             </div>
         </div>
     </div>
@@ -32,20 +55,62 @@
             <div class="card-body">
                 <div class="card">
                     <div class="card-body">
-                        <p>Card</p>
+                        @if(cards == null)
+                        {
+                            <div class="container-fluid d-flex align-items-center justify-content-center">
+                                <p>Loading...</p>
+                            </div>
+                        }
+                        @if(cards != null)
+                        {
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Balance</th>
+                
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var card in cards)
+                                    {
+                                        <tr>
+                                            <td>@card.Name</td>
+                                            <td>@card.Balance</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>   
+                        }
                     </div>
                 </div>
             </div>
         </div>
 
-    </div>
-</AuthorizeView>
+    </div> 
+</AuthorizeView>  
+
 @code {
     private Account[]? accounts;
     private Card[]? cards;
 
-    protected override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
-        return base.OnInitializedAsync();
+        try
+        {
+            accounts = await Http.GetFromJsonAsync<Account[]>("api/Account/jwt/get/accounts");
+        } catch
+        {
+            Console.WriteLine("Error Getting Accounts");
+        }
+
+        try
+        {
+            cards = await Http.GetFromJsonAsync<Card[]>("api/Cards/jwt/get/cards");
+        } catch
+        {
+            Console.WriteLine("Error Getting Cards");
+        }
+
     }
 }

@@ -1,5 +1,7 @@
 ﻿using BankKazungV2.Server.Data;
+using BankKazungV2.Server.JwtHelp;
 using BankKazungV2.Shared.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -19,52 +21,36 @@ namespace BankKazungV2.Server.Controllers
             _context = context;
         }
 
-        [HttpGet, Authorize]
-        public async Task<IActionResult> GetUsers()
+        [HttpGet("jwt/get/user"), Authorize]
+        public async Task<ActionResult<User>> GetUserByJWT()
         {
-            var users = await _context.Users.ToListAsync();
-            return Ok(users);
-        }
+            var Token = await HttpContext.GetTokenAsync("access_token");
+            var UserID = JwtHelper.DecodeUserIDFromToken(Token);
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetUser(int id)
-        {
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.UserID == id);
-            if(user == null)
-            {
-                return NotFound($"No User with UserID {id} was found");
-            }
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.UserID == UserID);
+
             return Ok(user);
         }
 
-        [HttpPut("update/{id}")]
-        public async Task<IActionResult> UpdateUser(User user, int id)
+        [HttpGet("jwt/get/user/full"), Authorize]
+        public async Task<ActionResult<User>> GetFullUserByJWT()
         {
-            var dbuser = await _context.Users
-                .FirstOrDefaultAsync(u => u.UserID == id);
-            dbuser.FirstName = user.FirstName;
-            dbuser.LastName = user.LastName;
-            dbuser.Email = user.Email;
-            dbuser.Age = user.Age;
-            dbuser.Phone = user.Phone;
+            var Token = await HttpContext.GetTokenAsync("access_token");
+            var UserID = JwtHelper.DecodeUserIDFromToken(Token);
+
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.UserID == UserID);
+            if(user == null)
+            {
+                return NotFound("User Not Found!");
+            }
+            if(user != null)
+            {
+                user.Accounts = await _context.Accounts.Where(u => u.UserID == UserID).ToListAsync();
+                user.Cards = await _context.Cards.Where(u => u.UserID == UserID).ToListAsync();
+            }
             
-            _context.SaveChanges();
 
-            return Ok(dbuser);
-        }
-
-        [HttpDelete("remove/{id}")]
-        public async Task<IActionResult> RemoveUser(int id)
-        {
-            var dbuser = await _context.Users
-                .FirstOrDefaultAsync(u => u.UserID == id);
-            
-            _context.Users.Remove(dbuser);
-
-            _context.SaveChanges();
-
-            return Ok("User Deleted");
+            return Ok(user);
         }
     }
 }
