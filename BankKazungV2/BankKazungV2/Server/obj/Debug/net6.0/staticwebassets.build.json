@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oCypRDryGuZtsR6nqK01TJtrBy9K4lYfC1esGmFjf/I=",
+  "Hash": "rHxgBgOvY1rksbVdhpmmeVg9ehbDLyo/1EMMHVI3v6M=",
   "Source": "BankKazungV2.Server",
   "BasePath": "_content/BankKazungV2.Server",
   "Mode": "Default",
@@ -11,10 +11,10 @@
       "Version": 2,
       "Source": "BankKazungV2.Client",
       "GetPublishAssetsTargets": "ComputeFilesToPublish;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "BuildProjectReferences=false;ResolveAssemblyReferencesFindRelatedSatellites=true;_PublishingBlazorWasmProject=true;Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishProperties": "BuildProjectReferences=false;ResolveAssemblyReferencesFindRelatedSatellites=true;_PublishingBlazorWasmProject=true",
       "AdditionalPublishPropertiesToRemove": "NoBuild;RuntimeIdentifier;WebPublishProfileFile;TargetFramework",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildProperties": "",
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
     }
   ],
@@ -199,23 +199,6 @@
       "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\6.0.1\\runtimes\\browser-wasm\\native\\dotnet.wasm"
     },
     {
-      "Identity": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\icudt.dat",
-      "SourceId": "BankKazungV2.Client",
-      "SourceType": "Project",
-      "ContentRoot": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt.dat",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "BlazorWebAssemblyResource",
-      "AssetTraitValue": "native",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\6.0.1\\runtimes\\browser-wasm\\native\\icudt.dat"
-    },
-    {
       "Identity": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\icudt_CJK.dat",
       "SourceId": "BankKazungV2.Client",
       "SourceType": "Project",
@@ -265,6 +248,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\6.0.1\\runtimes\\browser-wasm\\native\\icudt_no_CJK.dat"
+    },
+    {
+      "Identity": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\icudt.dat",
+      "SourceId": "BankKazungV2.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt.dat",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "native",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\6.0.1\\runtimes\\browser-wasm\\native\\icudt.dat"
     },
     {
       "Identity": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.dll",
@@ -7016,6 +7016,23 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
+      "Identity": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "SourceId": "BankKazungV2.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "css/open-iconic/FONT-LICENSE",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
+    },
+    {
       "Identity": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "BankKazungV2.Client",
       "SourceType": "Project",
@@ -7116,23 +7133,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
-    },
-    {
-      "Identity": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
-      "SourceId": "BankKazungV2.Client",
-      "SourceType": "Project",
-      "ContentRoot": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "css/open-iconic/FONT-LICENSE",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
       "Identity": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\wwwroot\\css\\open-iconic\\ICON-LICENSE",

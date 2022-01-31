@@ -199,14 +199,14 @@
       "netstandard.dll": "sha256-1nMAQ0QEpq5opAgJ9ulKwzJ99J7j6FOhdPcTaCZTzzw=",
       "System.Private.CoreLib.dll": "sha256-9T5MVQHJaduOMTxFnxLK8+8kY2JFN\/5SyO73e1eZlsU=",
       "BankKazungV2.Shared.dll": "sha256-GQymZbjIzvxzygJFe7VvShRJi1htdbjip\/MLI8Pnjks=",
-      "BankKazungV2.Client.dll": "sha256-fJ8C5FZKt5lpRot3HPI6uBAEhPHCyT8puZ0oYnStxUs="
+      "BankKazungV2.Client.dll": "sha256-ZjTnJ1J+Z0XQbsdc+iN+JcYkUL+9td4rstnjqGZSl70="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
       "BankKazungV2.Shared.pdb": "sha256-pH9d8+dWPsGvAsJgSqpmHYz79ejf2je9cfGAmjqTUDw=",
-      "BankKazungV2.Client.pdb": "sha256-mcaAOtq52jbM0i9wBZUuQieRP1qdkmWjihPLjkrubDM="
+      "BankKazungV2.Client.pdb": "sha256-YhL9srz16JF1mWzBq0MG4sFTftwjQ0q9K9kOQ5b70ug="
     },
     "runtime": {
       "dotnet.6.0.1.ynjylm5yl3.js": "sha256-9PASdETeWhfCtXSYFC6rggJeldu\/lkBddQzLbZU3sZY=",

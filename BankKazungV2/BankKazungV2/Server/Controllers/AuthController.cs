@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using BankKazungV2.Shared.DataTransferObjects;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using BankKazungV2.Server.JwtHelp;
 
 namespace BankKazungV2.Server.Controllers
 {
@@ -62,31 +63,10 @@ namespace BankKazungV2.Server.Controllers
                 return BadRequest("Wrong Password");
             }
 
-            string token = CreateToken(user);
+            string token = JwtHelper.CreateToken(user, Encoding.UTF8.GetBytes(_configuration.GetSection("Jwt:Key").Value));
             return Ok(token);
 
         }
-
-        [NonAction]
-        private string CreateToken(User _user)
-        {
-            List<Claim> claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, _user.FirstName),
-                new Claim(ClaimTypes.Surname, _user.LastName),
-                new Claim(ClaimTypes.Email, _user.Email),
-                new Claim(ClaimTypes.NameIdentifier, _user.UserID.ToString())
-            };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("Jwt:Key").Value));
-            var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-            var token = new JwtSecurityToken(
-                claims: claims,
-                expires: DateTime.Now.AddDays(1),
-                signingCredentials: cred);
-            
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        } 
 
         [NonAction]
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)

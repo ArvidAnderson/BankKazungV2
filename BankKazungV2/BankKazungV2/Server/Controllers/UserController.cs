@@ -38,7 +38,7 @@ namespace BankKazungV2.Server.Controllers
             return Ok(user);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateUser(User user, int id)
         {
             var dbuser = await _context.Users
@@ -52,6 +52,19 @@ namespace BankKazungV2.Server.Controllers
             _context.SaveChanges();
 
             return Ok(dbuser);
+        }
+
+        [HttpDelete("remove/{id}")]
+        public async Task<IActionResult> RemoveUser(int id)
+        {
+            var dbuser = await _context.Users
+                .FirstOrDefaultAsync(u => u.UserID == id);
+            
+            _context.Users.Remove(dbuser);
+
+            _context.SaveChanges();
+
+            return Ok("User Deleted");
         }
     }
 }
