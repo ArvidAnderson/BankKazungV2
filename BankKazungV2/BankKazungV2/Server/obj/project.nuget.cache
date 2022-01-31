@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "C5epL/wXMsnL05GK9+N05NQYJzoFWjrauD54AOAJO4bYVAsXd5rCPGsi/pytVuRRztBqdNL473pOXCBghgKW9w==",
+  "dgSpecHash": "aV3qPVKxH2TmgJb6l599K32u/onE1V93U9Qm9Ur3hrQFiDVvnn/2PvxObG6XnNt0kfUUBodcW23VsM8O1a16eQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Server\\BankKazungV2.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arvid\\.nuget\\packages\\blazored.localstorage\\4.1.5\\blazored.localstorage.4.1.5.nupkg.sha512",
+    "C:\\Users\\arvid\\.nuget\\packages\\blazored.modal\\6.0.1\\blazored.modal.6.0.1.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",

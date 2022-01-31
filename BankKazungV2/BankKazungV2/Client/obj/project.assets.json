@@ -14,6 +14,27 @@
           "lib/net5.0/Blazored.LocalStorage.dll": {}
         }
       },
+      "Blazored.Modal/6.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.6",
+          "Microsoft.AspNetCore.Components.Web": "3.1.6",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.6",
+          "Microsoft.JSInterop.WebAssembly": "3.2.1"
+        },
+        "compile": {
+          "lib/netstandard2.1/Blazored.Modal.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Blazored.Modal.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazored.Modal.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazored.Modal.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -440,6 +461,27 @@
           "lib/net5.0/Blazored.LocalStorage.dll": {}
         }
       },
+      "Blazored.Modal/6.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.6",
+          "Microsoft.AspNetCore.Components.Web": "3.1.6",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.6",
+          "Microsoft.JSInterop.WebAssembly": "3.2.1"
+        },
+        "compile": {
+          "lib/netstandard2.1/Blazored.Modal.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Blazored.Modal.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazored.Modal.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazored.Modal.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -861,6 +903,25 @@
         "icon.png",
         "lib/net5.0/Blazored.LocalStorage.dll",
         "lib/netstandard2.1/Blazored.LocalStorage.dll"
+      ]
+    },
+    "Blazored.Modal/6.0.1": {
+      "sha512": "a7FwVYU2nDL6MBvtBnkp8GSLTEdZU4eKcN8ZcfhQNh4tFwGRKsIvz9jN+6eIEGV1PdI2rbzHkif/igyOcfC8Zg==",
+      "type": "package",
+      "path": "blazored.modal/6.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazored.modal.6.0.1.nupkg.sha512",
+        "blazored.modal.nuspec",
+        "build/Blazored.Modal.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazored.Modal.props",
+        "buildTransitive/Blazored.Modal.props",
+        "icon.png",
+        "lib/netstandard2.1/Blazored.Modal.dll",
+        "staticwebassets/blazored-modal.css",
+        "staticwebassets/blazored.modal.js"
       ]
     },
     "Microsoft.AspNetCore.Authorization/6.0.1": {
@@ -1647,6 +1708,7 @@
     "net6.0": [
       "BankKazungV2.Shared >= 1.0.0",
       "Blazored.LocalStorage >= 4.1.5",
+      "Blazored.Modal >= 6.0.1",
       "Microsoft.AspNetCore.Components.Authorization >= 6.0.1",
       "Microsoft.AspNetCore.Components.WebAssembly >= 6.0.1",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 6.0.1"
@@ -1703,6 +1765,10 @@
           "Blazored.LocalStorage": {
             "target": "Package",
             "version": "[4.1.5, )"
+          },
+          "Blazored.Modal": {
+            "target": "Package",
+            "version": "[6.0.1, )"
           },
           "Microsoft.AspNetCore.Components.Authorization": {
             "target": "Package",

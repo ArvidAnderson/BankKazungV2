@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jkn55LEKhN/+Fra6yp1OZosHPSJeZPVPxH68ns8lSio=",
+  "Hash": "Q8JWnl9DP3a6qf5aU7ySHNG40mlbXvRJOfJuPG320Cw=",
   "Source": "BankKazungV2.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -16,6 +16,40 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\arvid\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\blazored-modal.css",
+      "SourceId": "Blazored.Modal",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\arvid\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\",
+      "BasePath": "_content/Blazored.Modal",
+      "RelativePath": "blazored-modal.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\arvid\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\blazored-modal.css"
+    },
+    {
+      "Identity": "C:\\Users\\arvid\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\blazored.modal.js",
+      "SourceId": "Blazored.Modal",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\arvid\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\",
+      "BasePath": "_content/Blazored.Modal",
+      "RelativePath": "blazored.modal.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\arvid\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\blazored.modal.js"
+    },
     {
       "Identity": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\BankKazungV2.Client.dll",
       "SourceId": "BankKazungV2.Client",
@@ -134,6 +168,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\arvid\\.nuget\\packages\\blazored.localstorage\\4.1.5\\lib\\net5.0\\Blazored.LocalStorage.dll"
+    },
+    {
+      "Identity": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Blazored.Modal.dll",
+      "SourceId": "BankKazungV2.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazored.Modal.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\arvid\\.nuget\\packages\\blazored.modal\\6.0.1\\lib\\netstandard2.1\\Blazored.Modal.dll"
     },
     {
       "Identity": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\dotnet.6.0.1.ynjylm5yl3.js",
@@ -6254,6 +6305,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\System.Web.dll"
+    },
+    {
+      "Identity": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\obj\\Debug\\net6.0\\build-gz\\UC64xUVZ.gz",
+      "SourceId": "BankKazungV2.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazored.Modal.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Blazored.Modal.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Blazored.Modal.dll"
     },
     {
       "Identity": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\obj\\Debug\\net6.0\\build-gz\\UcxOTry5.gz",

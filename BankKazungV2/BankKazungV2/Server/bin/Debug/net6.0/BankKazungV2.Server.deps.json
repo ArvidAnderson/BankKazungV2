@@ -10,6 +10,7 @@
         "dependencies": {
           "BankKazungV2.Client": "1.0.0",
           "BankKazungV2.Shared": "1.0.0",
+          "Blazored.Modal": "6.0.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.1",
           "Microsoft.AspNetCore.Components.WebAssembly.Server": "6.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.1",
@@ -30,6 +31,20 @@
         },
         "runtime": {
           "lib/net5.0/Blazored.LocalStorage.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Blazored.Modal/6.0.1": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "6.0.1",
+          "Microsoft.AspNetCore.Components.Web": "6.0.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
+          "Microsoft.JSInterop.WebAssembly": "6.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Blazored.Modal.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -2476,6 +2491,7 @@
         "dependencies": {
           "BankKazungV2.Shared": "1.0.0",
           "Blazored.LocalStorage": "4.1.5",
+          "Blazored.Modal": "6.0.1",
           "Microsoft.AspNetCore.Components.Authorization": "6.0.1",
           "Microsoft.AspNetCore.Components.WebAssembly": "6.0.1"
         },
@@ -2502,6 +2518,13 @@
       "sha512": "sha512-i9v27ScPOsHv6skc+isE+DZ/mtR53w019Nq2/MnjvpiLV2otbnqqyxfiYnXAU0Ho6MBIvAS2gdf+odbAyDZPzw==",
       "path": "blazored.localstorage/4.1.5",
       "hashPath": "blazored.localstorage.4.1.5.nupkg.sha512"
+    },
+    "Blazored.Modal/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-a7FwVYU2nDL6MBvtBnkp8GSLTEdZU4eKcN8ZcfhQNh4tFwGRKsIvz9jN+6eIEGV1PdI2rbzHkif/igyOcfC8Zg==",
+      "path": "blazored.modal/6.0.1",
+      "hashPath": "blazored.modal.6.0.1.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",

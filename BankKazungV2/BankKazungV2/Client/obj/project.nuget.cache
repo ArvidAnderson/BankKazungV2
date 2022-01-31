@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "lNgr0zPyihjes7qOcQLMSRnoWYwfmZmAjGizWXRJdTB9R18gq86m3hn+pWVS0LWWVbP0w7liZoZw8AZbBdA+wA==",
+  "dgSpecHash": "5lwC8+jcCSuTCSrxtbNri56LZn5Ab1TSZ7WUrK/ke92aeH/5e4RyRa7XSeYkJxq/Lb5ljVK2Q4J5R07TVMrJ4g==",
   "success": true,
   "projectFilePath": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Client\\BankKazungV2.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arvid\\.nuget\\packages\\blazored.localstorage\\4.1.5\\blazored.localstorage.4.1.5.nupkg.sha512",
+    "C:\\Users\\arvid\\.nuget\\packages\\blazored.modal\\6.0.1\\blazored.modal.6.0.1.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.1\\microsoft.aspnetcore.authorization.6.0.1.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.aspnetcore.components\\6.0.1\\microsoft.aspnetcore.components.6.0.1.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\6.0.1\\microsoft.aspnetcore.components.analyzers.6.0.1.nupkg.sha512",

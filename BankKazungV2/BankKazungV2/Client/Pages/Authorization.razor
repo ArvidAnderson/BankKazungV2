@@ -15,10 +15,10 @@
         <div class="card">
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
-                    <li class="nav-item">
+                    <li @onclick="(() => setSelectedView(1))" class="nav-item">
                         <a class="nav-link active">Login</a>
                     </li>
-                    <li class="nav-item">
+                    <li @onclick="(() => setSelectedView(2))" class="nav-item">
                         <a class="nav-link">Register</a>
                     </li>
                 </ul>
@@ -42,7 +42,35 @@
                 }
                 @if(selectedView == "Register")
                 {
-                    <h1>Register</h1>
+                    <EditForm Model="registerUser" OnSubmit="HandleRegister">
+                        <div class="form-group">
+                            <label for="FirstName">First Name</label>
+                            <InputText class="form-control" id="FirstName" @bind-Value="registerUser.FirstName"></InputText>
+                        </div>
+                        <div class="form-group">
+                            <label for="LastName">Last Name</label>
+                            <InputText class="form-control" id="LastName" @bind-Value="registerUser.LastName"></InputText>
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <InputText class="form-control" id="Email" @bind-Value="registerUser.Email"></InputText>
+                        </div>
+                        <div class="form-group">
+                            <label for="Phone">Phone</label>
+                            <InputText class="form-control" id="Phone" @bind-Value="registerUser.Phone"></InputText>
+                        </div>
+                        <div class="form-group">
+                            <label for="Age">Age</label>
+                            <InputNumber class="form-control" id="Age" @bind-Value="registerUser.Age"></InputNumber>
+                        </div>
+                        <div class="form-group">
+                            <label for="Password">Password</label>
+                            <InputText type="password" class="form-control" id="Password" @bind-Value="loginUser.Password"></InputText>
+                        </div>
+                        <div class="form-group mt-1">
+                            <button class="btn btn-primary" type="submit">Register</button>
+                        </div>
+                    </EditForm>
                 }
             </div>
         </div>
@@ -52,8 +80,11 @@
 
 @code {
     UserLogin loginUser = new UserLogin();
+    UserRegister registerUser = new UserRegister();
 
-    private async void HandleLogin()
+    private string selectedView = "Login";
+
+    private async Task HandleLogin()
     {
         var result = await Http.PostAsJsonAsync("api/Auth/login", loginUser);
         if(result.StatusCode == HttpStatusCode.OK)
@@ -67,10 +98,27 @@
         }
     }
 
-    private string selectedView = "Login";
-
-    private void setSelectedView(string _view)
+    private async Task HandleRegister()
     {
-        selectedView = _view;
+        var result = await Http.PostAsJsonAsync("api/Auth/register", registerUser);
+        if(result.StatusCode == HttpStatusCode.OK)
+        {
+            registerUser = new UserRegister();
+            setSelectedView(1);
+        }
+    }
+
+    private void setSelectedView(int _view)
+    {
+        switch(_view)
+        {
+            case 1:
+                selectedView = "Login";
+                break;
+            case 2:
+                selectedView = "Register";
+                break;
+        }
+        
     }
 }
