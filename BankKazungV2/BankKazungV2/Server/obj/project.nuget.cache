@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "KR0faY+aZ03N+7li3gu63N1LY7imK08TrTQY9fSK2B/uJKQlxEKJwMOufEtK3QR4oK3h7wrFwRSjHlBjtLr1PA==",
+  "dgSpecHash": "C5epL/wXMsnL05GK9+N05NQYJzoFWjrauD54AOAJO4bYVAsXd5rCPGsi/pytVuRRztBqdNL473pOXCBghgKW9w==",
   "success": true,
   "projectFilePath": "C:\\Users\\arvid\\Documents\\GitHub\\BankKazungV2\\BankKazungV2\\BankKazungV2\\Server\\BankKazungV2.Server.csproj",
   "expectedPackageFiles": [
@@ -71,10 +71,10 @@
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.identity.client\\4.21.1\\microsoft.identity.client.4.21.1.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.10.0\\microsoft.identitymodel.jsonwebtokens.6.10.0.nupkg.sha512",
-    "C:\\Users\\arvid\\.nuget\\packages\\microsoft.identitymodel.logging\\6.15.1\\microsoft.identitymodel.logging.6.15.1.nupkg.sha512",
+    "C:\\Users\\arvid\\.nuget\\packages\\microsoft.identitymodel.logging\\6.14.1\\microsoft.identitymodel.logging.6.14.1.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.10.0\\microsoft.identitymodel.protocols.6.10.0.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.10.0\\microsoft.identitymodel.protocols.openidconnect.6.10.0.nupkg.sha512",
-    "C:\\Users\\arvid\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.15.1\\microsoft.identitymodel.tokens.6.15.1.nupkg.sha512",
+    "C:\\Users\\arvid\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.14.1\\microsoft.identitymodel.tokens.6.14.1.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.jsinterop\\6.0.1\\microsoft.jsinterop.6.0.1.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.jsinterop.webassembly\\6.0.1\\microsoft.jsinterop.webassembly.6.0.1.nupkg.sha512",
     "C:\\Users\\arvid\\.nuget\\packages\\microsoft.net.stringtools\\1.0.0\\microsoft.net.stringtools.1.0.0.nupkg.sha512",

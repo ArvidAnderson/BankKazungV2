@@ -11,12 +11,17 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+//EF
 builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultDB"));
 });
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+//Swagger
 builder.Services.AddSwaggerGen(options => {
     options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
     {
@@ -28,17 +33,17 @@ builder.Services.AddSwaggerGen(options => {
 
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
+
+//JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
-    options.RequireHttpsMetadata = false;
-    options.SaveToken = true;
     options.TokenValidationParameters = new TokenValidationParameters()
     {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidAudience = builder.Configuration["Jwt:Audience"],
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
+            .GetBytes(builder.Configuration.GetSection("Jwt:Key").Value)),
+        ValidateIssuer = false,
+        ValidateAudience = false,
     };
 });
 
@@ -66,8 +71,9 @@ app.UseHttpsRedirection();
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 
-app.UseRouting();
 app.UseAuthentication();
+
+app.UseRouting();
 
 app.UseAuthorization();
 

@@ -1,5 +1,6 @@
 ﻿@page "/admin/users"
-@attribute [Authorize(Roles = "Admin")]
+@attribute [Authorize]
+@using BankKazungV2.Shared.DataTransferObjects
 @using BankKazungV2.Shared.Models
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
@@ -46,13 +47,39 @@ else
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="mt-2 col-sm-4">
             <div class="card">
                 <div class="card-header">
                     <h4>Add user</h4>
                 </div>
                 <div class="card-body">
-
+                    <EditForm Model="@newUser" OnValidSubmit="HandleAddNewUser">
+                        <div class="form-group">
+                            <label for="FirstName">First Name</label>
+                            <InputText class="form-control" id="FirstName" @bind-Value="newUser.FirstName"></InputText>
+                        </div>
+                        <div class="form-group">
+                            <label for="LastName">Last Name</label>
+                            <InputText class="form-control" id="LastName" @bind-Value="newUser.LastName"></InputText>
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <InputText class="form-control" id="Email" @bind-Value="newUser.Email"></InputText>
+                        </div>
+                        <div class="form-group">
+                            <label for="Phone">Phone</label>
+                            <InputText class="form-control" id="Phone" @bind-Value="newUser.Phone"></InputText>
+                        </div>
+                        <div class="form-group">
+                            <label for="Age">Age</label>
+                            <InputNumber class="form-control" id="Age" @bind-Value="newUser.Age"></InputNumber>
+                        </div>
+                        <div class="form-group">
+                            <label for="Password">Password</label>
+                            <InputText class="form-control" id="Password" @bind-Value="newUser.Password"></InputText>
+                        </div>
+                        <button class="mt-2 btn btn-primary">Create User</button>
+                    </EditForm>
                 </div>
             </div>
         </div>
@@ -70,8 +97,17 @@ else
         users = await Http.GetFromJsonAsync<User[]>("api/User");
     }
 
-    private void HandleAddNewUserValidSubmit()
+    private async Task RefreshUsers()
     {
-        
+        users = await Http.GetFromJsonAsync<User[]>("api/User");
+    }
+
+    private UserRegister newUser = new UserRegister();
+
+    private async Task HandleAddNewUser()
+    {
+        var registerUser = await Http.PostAsJsonAsync("api/Auth/register", newUser);
+        await RefreshUsers();
+        newUser = new UserRegister();
     }
 }

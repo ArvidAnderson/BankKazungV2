@@ -25,5 +25,6 @@ namespace BankKazungV2.Shared.Models
         public byte[] Salt { get; set; }
         public List<Card> Cards { get; set; } = new List<Card>();
         public List<Account> Accounts { get; set; } = new List<Account>();
+        public List<UserRoles> Roles { get; set; } = new List<UserRoles>();
     }
 }

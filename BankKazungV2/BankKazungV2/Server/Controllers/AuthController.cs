@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using BankKazungV2.Shared.DataTransferObjects;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace BankKazungV2.Server.Controllers
 {
@@ -43,15 +44,15 @@ namespace BankKazungV2.Server.Controllers
                 return BadRequest("Error Creating User");
             }
 
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
             return Ok("Succesfully Created User");
         }
 
         [HttpPost("login")]
         public async Task<ActionResult<User>> Login(UserLogin _user)
         {
-            User user = _context.Users.SingleOrDefault(x => x.Email == _user.Email.ToLower());
+            User ?user = await _context.Users.SingleOrDefaultAsync(x => x.Email == _user.Email.ToLower());
             if(user == null)
             {
                 return BadRequest("Wrong Email");
@@ -72,17 +73,17 @@ namespace BankKazungV2.Server.Controllers
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, _user.FirstName),
-                new Claim(ClaimTypes.NameIdentifier, _user.UserID.ToString()),
+                new Claim(ClaimTypes.Surname, _user.LastName),
+                new Claim(ClaimTypes.Email, _user.Email),
+                new Claim(ClaimTypes.NameIdentifier, _user.UserID.ToString())
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("Jwt:Key").Value));
+            var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
             var token = new JwtSecurityToken(
-                _configuration["Jwt:Issuer"],
-                _configuration["Jwt:Audience"],
-                claims,
-                expires: DateTime.UtcNow.AddMinutes(10),
-                signingCredentials: signIn);
+                claims: claims,
+                expires: DateTime.Now.AddDays(1),
+                signingCredentials: cred);
             
             return new JwtSecurityTokenHandler().WriteToken(token);
         } 

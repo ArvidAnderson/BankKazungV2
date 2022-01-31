@@ -21,6 +21,8 @@ namespace BankKazungV2.Server.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Card> Cards { get; set; }
+        public DbSet<UserRoles> UserRoles { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Role> Roles { get; set; }
     }
 }

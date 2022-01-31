@@ -86,6 +86,23 @@ namespace BankKazungV2.Server.Migrations
                     b.ToTable("Cards");
                 });
 
+            modelBuilder.Entity("BankKazungV2.Shared.Models.Role", b =>
+                {
+                    b.Property<int>("RoleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleID"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RoleID");
+
+                    b.ToTable("Roles");
+                });
+
             modelBuilder.Entity("BankKazungV2.Shared.Models.Transaction", b =>
                 {
                     b.Property<int>("TransactionID")
@@ -183,6 +200,27 @@ namespace BankKazungV2.Server.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("BankKazungV2.Shared.Models.UserRoles", b =>
+                {
+                    b.Property<int>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"), 1L, 1);
+
+                    b.Property<int>("RoleID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserID1")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserID");
+
+                    b.HasIndex("UserID1");
+
+                    b.ToTable("UserRoles");
+                });
+
             modelBuilder.Entity("BankKazungV2.Shared.Models.Account", b =>
                 {
                     b.HasOne("BankKazungV2.Shared.Models.User", null)
@@ -212,6 +250,15 @@ namespace BankKazungV2.Server.Migrations
                         .HasForeignKey("CardID");
                 });
 
+            modelBuilder.Entity("BankKazungV2.Shared.Models.UserRoles", b =>
+                {
+                    b.HasOne("BankKazungV2.Shared.Models.User", null)
+                        .WithMany("Roles")
+                        .HasForeignKey("UserID1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("BankKazungV2.Shared.Models.Account", b =>
                 {
                     b.Navigation("Transactions");
@@ -227,6 +274,8 @@ namespace BankKazungV2.Server.Migrations
                     b.Navigation("Accounts");
 
                     b.Navigation("Cards");
+
+                    b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618
         }

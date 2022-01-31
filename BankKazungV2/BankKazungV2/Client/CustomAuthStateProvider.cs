@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Net.Http.Headers;
+using System.Security.Claims;
 using System.Text.Json;
 
 namespace BankKazungV2.Client
@@ -6,9 +7,11 @@ namespace BankKazungV2.Client
     public class CustomAuthStateProvider : AuthenticationStateProvider
     {
         private readonly ILocalStorageService _localStorage;
-        public CustomAuthStateProvider(ILocalStorageService LocalStorage)
+        private readonly HttpClient _http;
+        public CustomAuthStateProvider(ILocalStorageService LocalStorage, HttpClient http)
         {
             _localStorage = LocalStorage;
+            _http = http;
         }
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
@@ -16,10 +19,12 @@ namespace BankKazungV2.Client
             string token = await _localStorage.GetItemAsStringAsync("token");
 
             var identity = new ClaimsIdentity();
+            _http.DefaultRequestHeaders.Authorization = null;
 
             if(!string.IsNullOrEmpty(token))
             {
                 identity = new ClaimsIdentity(ParseClaimsFromJwt(token), "jwt");
+                _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Replace("\"", ""));
             }
 
             var user = new ClaimsPrincipal(identity);

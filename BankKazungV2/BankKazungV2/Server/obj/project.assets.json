@@ -1402,7 +1402,7 @@
           "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Logging/6.15.1": {
+      "Microsoft.IdentityModel.Logging/6.14.1": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll": {}
@@ -1437,11 +1437,11 @@
           "lib/netstandard2.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Tokens/6.15.1": {
+      "Microsoft.IdentityModel.Tokens/6.14.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
-          "Microsoft.IdentityModel.Logging": "6.15.1",
+          "Microsoft.IdentityModel.Logging": "6.14.1",
           "System.Security.Cryptography.Cng": "4.5.0"
         },
         "compile": {
@@ -5282,10 +5282,10 @@
         "microsoft.identitymodel.jsonwebtokens.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/6.15.1": {
-      "sha512": "PpZHL/Bt/8vQ8g/6LxweuI1EusV0ogUBYnGM+bPeL/SG89gx2n05xKNE/U5JNEkLFLL+sk7O8T7c/PXhFtUtUg==",
+    "Microsoft.IdentityModel.Logging/6.14.1": {
+      "sha512": "yjB8cYrRwQp/sX0JhpXHggUwF4YhyMoVE0Mzdyc9Z0gFikOej4dUNlnG7H9J5SCmI2xjLAYxinyDIzmGBFqCbg==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/6.15.1",
+      "path": "microsoft.identitymodel.logging/6.14.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5297,7 +5297,7 @@
         "lib/net472/Microsoft.IdentityModel.Logging.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.6.15.1.nupkg.sha512",
+        "microsoft.identitymodel.logging.6.14.1.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
@@ -5339,10 +5339,10 @@
         "microsoft.identitymodel.protocols.openidconnect.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/6.15.1": {
-      "sha512": "0bd0ocKuNai0/GdhboIW37R6z8I0vFqlmiPeG055SJxPPJ7dfBo2tjJ3bPV9vjFCRDuusj24dldOsg4hWui6iw==",
+    "Microsoft.IdentityModel.Tokens/6.14.1": {
+      "sha512": "14Z15Rwd0V6+m7mxbRWH2CrT2PK/B3H3R8qGNDeI6lSPFIQTq/1AJaYkCGcVX1xlKSowdNYaAROMaPbiWv8KIQ==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/6.15.1",
+      "path": "microsoft.identitymodel.tokens/6.14.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5354,7 +5354,7 @@
         "lib/net472/Microsoft.IdentityModel.Tokens.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.6.15.1.nupkg.sha512",
+        "microsoft.identitymodel.tokens.6.14.1.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
@@ -10489,7 +10489,7 @@
       "Microsoft.AspNetCore.Components.WebAssembly.Server >= 6.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.1",
-      "Microsoft.IdentityModel.Tokens >= 6.15.1",
+      "Microsoft.IdentityModel.Tokens >= 6.14.1",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.1",
       "Swashbuckle.AspNetCore >= 6.2.3",
       "Swashbuckle.AspNetCore.Filters >= 7.0.2",
@@ -10567,7 +10567,7 @@
           },
           "Microsoft.IdentityModel.Tokens": {
             "target": "Package",
-            "version": "[6.15.1, )"
+            "version": "[6.14.1, )"
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
