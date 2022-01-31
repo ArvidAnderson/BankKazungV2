@@ -12,6 +12,7 @@ namespace BankKazungV2.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly DataContext _context;
@@ -21,7 +22,7 @@ namespace BankKazungV2.Server.Controllers
             _context = context;
         }
 
-        [HttpGet("jwt/get/user"), Authorize]
+        [HttpGet("jwt/get/user")]
         public async Task<ActionResult<User>> GetUserByJWT()
         {
             var Token = await HttpContext.GetTokenAsync("access_token");
@@ -32,7 +33,7 @@ namespace BankKazungV2.Server.Controllers
             return Ok(user);
         }
 
-        [HttpGet("jwt/get/user/full"), Authorize]
+        [HttpGet("jwt/get/user/full")]
         public async Task<ActionResult<User>> GetFullUserByJWT()
         {
             var Token = await HttpContext.GetTokenAsync("access_token");
