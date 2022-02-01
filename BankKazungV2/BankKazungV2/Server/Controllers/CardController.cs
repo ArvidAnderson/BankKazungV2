@@ -1,5 +1,6 @@
 ﻿using BankKazungV2.Server.Data;
 using BankKazungV2.Server.JwtHelp;
+using BankKazungV2.Shared.DataTransferObjects;
 using BankKazungV2.Shared.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -9,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BankKazungV2.Server.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/card")]
     [ApiController]
     [Authorize]
     public class CardController : ControllerBase
@@ -21,49 +22,52 @@ namespace BankKazungV2.Server.Controllers
             _context = context;
         }
 
-        [HttpGet("jwt/get/cards")]
-        public async Task<IActionResult> GetCardsByJWT()
+        [HttpGet("{Id}")]
+        public async Task<ActionResult<Card>> GetCardByJWT(int Id)
         {
             var Token = await HttpContext.GetTokenAsync("access_token");
+            if (Token == null) { return BadRequest("No Access Token Provided"); }
+
+            var UserID = JwtHelper.DecodeUserIDFromToken(Token);
+
+            var card = await _context.Cards.SingleOrDefaultAsync(c => c.CardID == Id);
+
+            if (card == null) { return NotFound("Card Not Found"); }
+            if (card.UserID != UserID) { return BadRequest("Card Not Owned By You"); }
+
+            return Ok(card);
+        }
+
+        [HttpGet("all")]
+        public async Task<ActionResult<Card[]>> GetCardsByJWT()
+        {
+            var Token = await HttpContext.GetTokenAsync("access_token");
+            if (Token == null) { return BadRequest("No Access Token Provided"); }
+
             var UserID = JwtHelper.DecodeUserIDFromToken(Token);
 
             List<Card> UserCards = await _context.Cards.Where(u => u.UserID == UserID).ToListAsync();
 
+            if (UserCards.Count == 0) { return BadRequest("Cards Not Found"); }
+
             return Ok(UserCards);
         }
 
-        [HttpGet("jwt/get/card")]
-        public async Task<ActionResult<Card>> GetCardByJWT(int _cardID)
+        [HttpPost("add")]
+        public async Task<ActionResult<Card>> AddCardByJWT(CardAdd _newCard)
         {
             var Token = await HttpContext.GetTokenAsync("access_token");
-            var UserID = JwtHelper.DecodeUserIDFromToken(Token);
+            if (Token == null) { return BadRequest("No Access Token Provided"); }
 
-            var card = await _context.Cards.SingleOrDefaultAsync(c => c.CardID == _cardID);
+            if(_newCard.Type != CardTypes.Credit && _newCard.Type != CardTypes.Debit) { return BadRequest("Card Type Invalid"); }
 
-            if (card == null)
-            {
-                return NotFound("Card Not Found");
-            }
-
-            if (card.UserID == UserID)
-            {
-                return Ok(card);
-            }
-
-            return BadRequest("Error Getting Card: !Permission");
-        }
-
-        [HttpPost("jwt/add/card")]
-        public async Task<ActionResult<Card>> AddCardByJWT(string _name, CardTypes _type)
-        {
-            var Token = await HttpContext.GetTokenAsync("access_token");
             var UserID = JwtHelper.DecodeUserIDFromToken(Token);
 
             Card newCard = new Card();
-            newCard.Name = _name;
+            newCard.Name = _newCard.Name;
             newCard.UserID = UserID;
-            newCard.Type = _type;
-            if(_type == CardTypes.Credit)
+            newCard.Type = _newCard.Type;
+            if(_newCard.Type == CardTypes.Credit)
             {
                 newCard.CreditLimit = 1000;
             }
@@ -74,27 +78,22 @@ namespace BankKazungV2.Server.Controllers
             return Ok(newCard);
         }
 
-        [HttpDelete("jwt/remove/card")]
-        public async Task<IActionResult> DeleteCardByJWT(int _cardID)
+        [HttpDelete("remove/{Id}")]
+        public async Task<IActionResult> DeleteCardByJWT(int Id)
         {
             var Token = await HttpContext.GetTokenAsync("access_token");
+            if (Token == null) { return BadRequest("No Access Token Provided"); }
+
             var UserID = JwtHelper.DecodeUserIDFromToken(Token);
 
-            var cardToDelete = await _context.Cards.SingleOrDefaultAsync(c => c.CardID == _cardID);
+            var cardToDelete = await _context.Cards.SingleOrDefaultAsync(c => c.CardID == Id);
 
-            if (cardToDelete == null)
-            {
-                return NotFound("Card Not Found");
-            }
+            if (cardToDelete == null) { return NotFound("Card Not Found"); }
+            if (cardToDelete.UserID != UserID) { return BadRequest("Card Not Owned By You"); }
 
-            if (cardToDelete.UserID == UserID)
-            {
-                _context.Cards.Remove(cardToDelete);
-                _context.SaveChanges();
-                return Ok($"Deleted Account: {_cardID}");
-            }
-
-            return BadRequest("Error Deleting Card: !Permission");
+            _context.Cards.Remove(cardToDelete);
+            _context.SaveChanges();
+            return Ok($"Deleted Account: {Id}");
         }
     }
 }
