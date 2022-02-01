@@ -22,7 +22,7 @@ namespace BankKazungV2.Server.Controllers
         }
 
         [HttpGet("jwt/get/cards")]
-        public async Task<IActionResult> GetAccountsByJWT()
+        public async Task<IActionResult> GetCardsByJWT()
         {
             var Token = await HttpContext.GetTokenAsync("access_token");
             var UserID = JwtHelper.DecodeUserIDFromToken(Token);
@@ -33,7 +33,7 @@ namespace BankKazungV2.Server.Controllers
         }
 
         [HttpGet("jwt/get/card")]
-        public async Task<ActionResult<Card>> GetAccountByJWT(int _cardID)
+        public async Task<ActionResult<Card>> GetCardByJWT(int _cardID)
         {
             var Token = await HttpContext.GetTokenAsync("access_token");
             var UserID = JwtHelper.DecodeUserIDFromToken(Token);
@@ -54,7 +54,7 @@ namespace BankKazungV2.Server.Controllers
         }
 
         [HttpPost("jwt/add/card")]
-        public async Task<ActionResult<Card>> AddAccountByJWT(string _name, CardTypes _type)
+        public async Task<ActionResult<Card>> AddCardByJWT(string _name, CardTypes _type)
         {
             var Token = await HttpContext.GetTokenAsync("access_token");
             var UserID = JwtHelper.DecodeUserIDFromToken(Token);
@@ -75,7 +75,7 @@ namespace BankKazungV2.Server.Controllers
         }
 
         [HttpDelete("jwt/remove/card")]
-        public async Task<IActionResult> DeleteAccountByJWT(int _cardID)
+        public async Task<IActionResult> DeleteCardByJWT(int _cardID)
         {
             var Token = await HttpContext.GetTokenAsync("access_token");
             var UserID = JwtHelper.DecodeUserIDFromToken(Token);

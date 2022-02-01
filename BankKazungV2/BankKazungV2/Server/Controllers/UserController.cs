@@ -22,7 +22,7 @@ namespace BankKazungV2.Server.Controllers
             _context = context;
         }
 
-        [HttpGet("jwt/get/user")]
+        [HttpGet]
         public async Task<ActionResult<User>> GetUserByJWT()
         {
             var Token = await HttpContext.GetTokenAsync("access_token");
@@ -33,7 +33,7 @@ namespace BankKazungV2.Server.Controllers
             return Ok(user);
         }
 
-        [HttpGet("jwt/get/user/full")]
+        [HttpGet("full")]
         public async Task<ActionResult<User>> GetFullUserByJWT()
         {
             var Token = await HttpContext.GetTokenAsync("access_token");

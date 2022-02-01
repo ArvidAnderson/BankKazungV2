@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BankKazungV2.Server.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/account")]
     [ApiController]
     [Authorize]
     public class AccountController : ControllerBase
@@ -22,46 +22,47 @@ namespace BankKazungV2.Server.Controllers
             _context = context;
         }
 
-        [HttpGet("jwt/get/accounts")]
+        [HttpGet("{Id}")]
+        public async Task<ActionResult<Account>> GetAccountByJWT(int Id)
+        {
+            var Token = await HttpContext.GetTokenAsync("access_token");
+            if(Token == null) { return BadRequest("No Access Token Provided"); }
+
+            var UserID = JwtHelper.DecodeUserIDFromToken(Token);
+
+            var account = await _context.Accounts.SingleOrDefaultAsync(a => a.AccountID == Id);
+
+            if(account == null) { return NotFound("Account Not Found"); }
+            if(account.UserID != UserID) { return BadRequest("Account Not Owned By You"); }
+
+            return Ok(account);
+        }
+
+        [HttpGet("all")]
         public async Task<IActionResult> GetAccountsByJWT()
         {
             var Token = await HttpContext.GetTokenAsync("access_token");
+            if(Token == null) { return BadRequest("No Access Token Provided"); }
+
             var UserID = JwtHelper.DecodeUserIDFromToken(Token);
 
             List<Account> UserAccounts = await _context.Accounts.Where(u => u.UserID == UserID).ToListAsync();
 
+            if(UserAccounts.Count == 0) { return BadRequest("Accounts Not Found"); }
+
             return Ok(UserAccounts);
         }
 
-        [HttpGet("jwt/get/account")]
-        public async Task<ActionResult<Account>> GetAccountByJWT(int _accountID)
+        [HttpPost("add/{Name}")]
+        public async Task<ActionResult<Account>> AddAccountByJWT(string Name)
         {
             var Token = await HttpContext.GetTokenAsync("access_token");
-            var UserID = JwtHelper.DecodeUserIDFromToken(Token);
+            if (Token == null) { return BadRequest("No Access Token Provided"); }
 
-            var account = await _context.Accounts.SingleOrDefaultAsync(a => a.AccountID == _accountID);
-            
-            if(account == null)
-            {
-                return NotFound("Account Not Found");
-            }
-
-            if(account.UserID == UserID)
-            {
-                return Ok(account);
-            }
-
-            return BadRequest("Error Getting Account: !Permission");
-        }
-
-        [HttpPost("jwt/add/account")]
-        public async Task<ActionResult<Account>> AddAccountByJWT(string _name)
-        {
-            var Token = await HttpContext.GetTokenAsync("access_token");
             var UserID = JwtHelper.DecodeUserIDFromToken(Token);
 
             Account newAccount = new Account();
-            newAccount.Name = _name;
+            newAccount.Name = Name;
             newAccount.UserID = UserID;
 
             _context.Accounts.Add(newAccount);
@@ -70,27 +71,23 @@ namespace BankKazungV2.Server.Controllers
             return Ok(newAccount);
         }
 
-        [HttpDelete("jwt/remove/account")]
-        public async Task<IActionResult> DeleteAccountByJWT(int _accountID)
+        [HttpDelete("remove/{Id}")]
+        public async Task<IActionResult> DeleteAccountByJWT(int Id)
         {
             var Token = await HttpContext.GetTokenAsync("access_token");
+            if (Token == null) { return BadRequest("No Access Token Provided"); }
+
             var UserID = JwtHelper.DecodeUserIDFromToken(Token);
 
-            var accountToDelete = await _context.Accounts.SingleOrDefaultAsync(a => a.AccountID == _accountID);
+            var accountToDelete = await _context.Accounts.SingleOrDefaultAsync(a => a.AccountID == Id);
 
-            if(accountToDelete == null)
-            {
-                return NotFound("Account Not Found");
-            }
+            if(accountToDelete == null) { return BadRequest("Account Not Found"); }
+            if(accountToDelete.UserID != UserID) { return BadRequest("Account Not Owned By You"); }
 
-            if(accountToDelete.UserID == UserID)
-            {
-                _context.Accounts.Remove(accountToDelete);
-                _context.SaveChanges();
-                return Ok($"Deleted Account: {_accountID}");
-            }
+            _context.Accounts.Remove(accountToDelete);
+            _context.SaveChanges();
 
-            return BadRequest("Error Deleting Account: !Permission");
+            return Ok($"Deleted Account: {Id}");
         }
     }
 }
