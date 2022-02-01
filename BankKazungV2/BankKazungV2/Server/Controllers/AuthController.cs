@@ -12,7 +12,7 @@ using BankKazungV2.Server.JwtHelp;
 
 namespace BankKazungV2.Server.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/auth")]
     [ApiController]
     public class AuthController : ControllerBase
     {
