@@ -40,13 +40,9 @@ namespace BankKazungV2.Server.Controllers
             user.Password = passwordHash;
             user.Salt = passwordSalt;
 
-            if (user == null)
-            {
-                return BadRequest("Error Creating User");
-            }
-
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
+
             return Ok("Succesfully Created User");
         }
 
@@ -54,18 +50,12 @@ namespace BankKazungV2.Server.Controllers
         public async Task<ActionResult<User>> Login(UserLogin _user)
         {
             User ?user = await _context.Users.SingleOrDefaultAsync(x => x.Email == _user.Email.ToLower());
-            if(user == null)
-            {
-                return BadRequest("Wrong Email");
-            }
-            if (user != null && !VerifyPasswordHash(_user.Password, user.Password, user.Salt))
-            {
-                return BadRequest("Wrong Password");
-            }
+
+            if (user == null) { return BadRequest("Wrong Email"); }
+            if (user != null && !VerifyPasswordHash(_user.Password, user.Password, user.Salt)) { return BadRequest("Wrong Password"); }
 
             string token = JwtHelper.CreateToken(user, Encoding.UTF8.GetBytes(_configuration.GetSection("Jwt:Key").Value));
             return Ok(token);
-
         }
 
         [NonAction]
