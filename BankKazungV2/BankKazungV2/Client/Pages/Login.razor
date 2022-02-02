@@ -1,0 +1,109 @@
+﻿@layout AuthenticationLayout
+@page "/authentication/login"
+@inject HttpClient http
+@inject AuthenticationStateProvider AuthStateProvider
+@inject ILocalStorageService LocalStorage
+@using System.ComponentModel.DataAnnotations
+@using System.Net
+
+<AuthorizeView Context="Auth">
+    <Authorized>
+        <MudContainer MaxWidth="MaxWidth.Small">
+            <MudCard Elevation="3">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">You're already logged in!</MudText>
+                    </CardHeaderContent>
+                    <CardHeaderActions>
+                        <MudIconButton Icon="@Icons.Material.Filled.Logout" Color="Color.Default" />
+                    </CardHeaderActions>
+                </MudCardHeader>
+            </MudCard>
+        </MudContainer>
+    </Authorized>
+    <NotAuthorized>
+        <MudContainer MaxWidth="MaxWidth.Small">
+            <EditForm Model="@model" OnInvalidSubmit="OnInvalidSubmit" OnValidSubmit="OnValidSubmit">
+            <DataAnnotationsValidator/>
+                    <!--Alerts -->
+                    @if(ValidationAlertState) {
+                        <MudAlert Class="mb-4" Severity="Severity.Warning" Variant="Variant.Filled" ShowCloseIcon="true" CloseIconClicked="(() => ToggleValidationAlert(false))"><ValidationSummary/></MudAlert>
+                    }
+                    @if(WrongCredentialsAlertState)
+                    {
+                        <MudAlert Severity="Severity.Error" Variant="Variant.Outlined" ShowCloseIcon="true" CloseIconClicked="(() => ToggleWrongCredentialsAlert(false))">Oops your username/email or password is incorrect!</MudAlert>            
+                    }
+                    <!--Form-->
+                    <MudCard Elevation="3">
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.h4">BankKazungV2</MudText>
+                                <MudText Typo="Typo.h6">Login</MudText>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent>
+                            <MudTextField Label="Email" Class="mt-3"
+                                            @bind-Value="model.Email" For="@(() => model.Email)"/>
+                            <MudTextField Label="Password" Class="mt-3"
+                                            @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password"/>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Class="ml-2 p-2" ButtonType="ButtonType.Submit" Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Login">Login</MudButton>
+                        </MudCardActions>
+                    </MudCard>
+            </EditForm>
+        </MudContainer>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private MudTheme Theme = new MudTheme();
+
+    LoginForm model = new LoginForm();
+    bool ValidationAlertState = false;
+    bool WrongCredentialsAlertState = false;
+
+    public class LoginForm
+    {
+        [Required]
+        [EmailAddress(ErrorMessage = "Email adress is not valid.")]
+        public string ?Email { get; set; }
+
+        [Required]
+        [StringLength(30, ErrorMessage = "Password must be at least 8 characters long.", MinimumLength = 8)]
+        public string ?Password { get; set; }
+
+    }
+
+    private async Task OnValidSubmit(EditContext context)
+    {
+        Console.WriteLine("Valid Submit");
+        var TryAuthenticate = await http.PostAsJsonAsync("api/auth/login", model);
+        if(TryAuthenticate.StatusCode == HttpStatusCode.OK)
+        {
+            var JWTToken = await TryAuthenticate.Content.ReadAsStringAsync();
+            await LocalStorage.SetItemAsync("token", JWTToken);
+            await AuthStateProvider.GetAuthenticationStateAsync();
+            StateHasChanged();
+        } else
+        {
+            ToggleWrongCredentialsAlert(true);   
+        }
+    }
+
+    private void OnInvalidSubmit(EditContext context)
+    {
+        Console.WriteLine("Invalid Submit");
+        ToggleValidationAlert(true);
+    }
+
+    private void ToggleValidationAlert(bool newState) {
+        ValidationAlertState = newState;
+    }
+
+    private void ToggleWrongCredentialsAlert(bool newState)
+    {
+        WrongCredentialsAlertState = newState;
+    }
+
+}

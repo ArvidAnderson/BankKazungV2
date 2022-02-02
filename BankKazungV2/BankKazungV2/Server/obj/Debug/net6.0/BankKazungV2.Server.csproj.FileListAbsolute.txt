@@ -292,3 +292,7 @@ C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\ob
 C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\obj\Debug\net6.0\BankKazungV2.Server.pdb
 C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\obj\Debug\net6.0\BankKazungV2.Server.genruntimeconfig.cache
 C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\bin\Debug\net6.0\Blazored.Modal.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\bin\Debug\net6.0\AntDesign.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\bin\Debug\net6.0\Microsoft.AspNetCore.Components.DataAnnotations.Validation.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\bin\Debug\net6.0\OneOf.dll
+C:\Users\arvid\Documents\GitHub\BankKazungV2\BankKazungV2\BankKazungV2\Server\bin\Debug\net6.0\MudBlazor.dll

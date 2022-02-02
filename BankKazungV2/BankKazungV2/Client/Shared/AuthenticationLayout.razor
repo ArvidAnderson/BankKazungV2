@@ -1,0 +1,13 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudMainContent>
+        <MudPaper Width="100vw" Height="100vh" Class="d-flex align-items-center justify-content-center" Style="padding-top: 0 !important">
+            @Body
+        </MudPaper>
+    </MudMainContent>
+</MudLayout>

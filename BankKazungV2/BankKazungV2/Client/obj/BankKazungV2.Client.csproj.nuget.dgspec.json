@@ -48,6 +48,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AntDesign": {
+              "target": "Package",
+              "version": "[0.10.3.1, )"
+            },
             "Blazored.LocalStorage": {
               "target": "Package",
               "version": "[4.1.5, )"
@@ -68,6 +72,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.1, )"
+            },
+            "MudBlazor": {
+              "target": "Package",
+              "version": "[6.0.5, )"
             }
           },
           "imports": [

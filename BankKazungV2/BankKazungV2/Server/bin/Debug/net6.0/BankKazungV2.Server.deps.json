@@ -10,7 +10,6 @@
         "dependencies": {
           "BankKazungV2.Client": "1.0.0",
           "BankKazungV2.Shared": "1.0.0",
-          "Blazored.Modal": "6.0.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.1",
           "Microsoft.AspNetCore.Components.WebAssembly.Server": "6.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.1",
@@ -23,6 +22,19 @@
         },
         "runtime": {
           "BankKazungV2.Server.dll": {}
+        }
+      },
+      "AntDesign/0.10.3.1": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.DataAnnotations.Validation": "3.2.0-rc1.20223.4",
+          "Microsoft.AspNetCore.Components.Web": "6.0.1",
+          "OneOf": "2.1.155"
+        },
+        "runtime": {
+          "lib/net5.0/AntDesign.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Blazored.LocalStorage/4.1.5": {
@@ -130,6 +142,17 @@
           "lib/net6.0/Microsoft.AspNetCore.Components.Authorization.dll": {
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.0.121.56714"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Components.DataAnnotations.Validation/3.2.0-rc1.20223.4": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Forms": "6.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.AspNetCore.Components.DataAnnotations.Validation.dll": {
+            "assemblyVersion": "3.2.0.0",
+            "fileVersion": "3.200.20.22304"
           }
         }
       },
@@ -1419,6 +1442,18 @@
           }
         }
       },
+      "MudBlazor/6.0.5": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "6.0.1",
+          "Microsoft.AspNetCore.Components.Web": "6.0.1"
+        },
+        "runtime": {
+          "lib/net6.0/MudBlazor.dll": {
+            "assemblyVersion": "6.0.5.0",
+            "fileVersion": "6.0.5.0"
+          }
+        }
+      },
       "NETStandard.Library/1.6.1": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -1572,6 +1607,17 @@
           "lib/netstandard2.0/NuGet.Versioning.dll": {
             "assemblyVersion": "5.11.0.10",
             "fileVersion": "5.11.0.10"
+          }
+        }
+      },
+      "OneOf/2.1.155": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "lib/netstandard1.3/OneOf.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -2489,11 +2535,13 @@
       },
       "BankKazungV2.Client/1.0.0": {
         "dependencies": {
+          "AntDesign": "0.10.3.1",
           "BankKazungV2.Shared": "1.0.0",
           "Blazored.LocalStorage": "4.1.5",
           "Blazored.Modal": "6.0.1",
           "Microsoft.AspNetCore.Components.Authorization": "6.0.1",
-          "Microsoft.AspNetCore.Components.WebAssembly": "6.0.1"
+          "Microsoft.AspNetCore.Components.WebAssembly": "6.0.1",
+          "MudBlazor": "6.0.5"
         },
         "runtime": {
           "BankKazungV2.Client.dll": {}
@@ -2511,6 +2559,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AntDesign/0.10.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OGM4nPii8ozT5XMX4wthihynJFhhjvWghf5df3gnzm8jF8nxhd2qqJk3f+ttpWxDBxKr2u9s5/EcwVv/qvKySg==",
+      "path": "antdesign/0.10.3.1",
+      "hashPath": "antdesign.0.10.3.1.nupkg.sha512"
     },
     "Blazored.LocalStorage/4.1.5": {
       "type": "package",
@@ -2588,6 +2643,13 @@
       "sha512": "sha512-cVE/z0bqqm1myMBK1pa/an9Z31V4eGb0E9c7gmiiViIq2bTz4TYFwkc9QlXwLwx1EKjNapi/+pTGITHI1ZIzKw==",
       "path": "microsoft.aspnetcore.components.authorization/6.0.1",
       "hashPath": "microsoft.aspnetcore.components.authorization.6.0.1.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.DataAnnotations.Validation/3.2.0-rc1.20223.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VyZAAbuXuAVrh4Vii5Aq1N841iVhSjE4mTf/lVh+AgrKinaltE0IeEWPKv889j4ineX7i9BUiAqlGP7UpZwlnQ==",
+      "path": "microsoft.aspnetcore.components.dataannotations.validation/3.2.0-rc1.20223.4",
+      "hashPath": "microsoft.aspnetcore.components.dataannotations.validation.3.2.0-rc1.20223.4.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Components.Forms/6.0.1": {
       "type": "package",
@@ -3135,6 +3197,13 @@
       "path": "microsoft.win32.systemevents/6.0.0",
       "hashPath": "microsoft.win32.systemevents.6.0.0.nupkg.sha512"
     },
+    "MudBlazor/6.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tw59g9BFGmIUXIjWqmANDIyIvKyEMeVcDrofgvF7a4j+6spNLS7/sSHCoTr+1H+GdH26f+TpaYFxuEJULcNX/Q==",
+      "path": "mudblazor/6.0.5",
+      "hashPath": "mudblazor.6.0.5.nupkg.sha512"
+    },
     "NETStandard.Library/1.6.1": {
       "type": "package",
       "serviceable": true,
@@ -3211,6 +3280,13 @@
       "sha512": "sha512-mCv/GzvMk5iatWoZY41PoIShEbwVxq9CDCc1fV/uqPFKZ4DD/1JuKZ5AL/FJJRsTanvMR3EOXKYCLdQ7PFYn8Q==",
       "path": "nuget.versioning/5.11.0",
       "hashPath": "nuget.versioning.5.11.0.nupkg.sha512"
+    },
+    "OneOf/2.1.155": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CvfkeLFoSrlQAXVJ7Tv59G0M8V5cMhJJdr65jOS9ouThbsQ6GD67TWvLAH2RgV5JEvlHw83eyfD74cGygEKGrw==",
+      "path": "oneof/2.1.155",
+      "hashPath": "oneof.2.1.155.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",
