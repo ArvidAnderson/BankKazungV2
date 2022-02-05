@@ -18,11 +18,11 @@
             <DataAnnotationsValidator/>
                     <!--Alerts -->
                     @if(ValidationAlertState) {
-                        <MudAlert Class="mb-4" Severity="Severity.Warning" Variant="Variant.Filled" ShowCloseIcon="true" CloseIconClicked="(() => ToggleValidationAlert(false))"><ValidationSummary/></MudAlert>
+                        <MudAlert Class="mt-4 mb-4" Severity="Severity.Warning" Variant="Variant.Filled" ShowCloseIcon="true" CloseIconClicked="(() => ToggleValidationAlert(false))"><ValidationSummary/></MudAlert>
                     }
                     @if(WrongCredentialsAlertState)
                     {
-                        <MudAlert Severity="Severity.Error" Variant="Variant.Outlined" ShowCloseIcon="true" CloseIconClicked="(() => ToggleWrongCredentialsAlert(false))">Oops your username/email or password is incorrect!</MudAlert>            
+                        <MudAlert Class="mt-4 mb-4" Severity="Severity.Error" Variant="Variant.Outlined" ShowCloseIcon="true" CloseIconClicked="(() => ToggleWrongCredentialsAlert(false))">Oops your username/email or password is incorrect!</MudAlert>            
                     }
                     <!--Form-->
                     <MudCard Elevation="3">
@@ -37,10 +37,8 @@
                             </MudCardHeader>
                         </MudPaper>
                         <MudCardContent>
-                            <MudTextField Label="Email" Class="mt-3"
-                                            @bind-Value="model.Email" For="@(() => model.Email)"/>
-                            <MudTextField Label="Password" Class="mt-3"
-                                            @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password"/>
+                            <MudTextField Label="Email" Class="mt-3" @bind-Value="model.Email" For="@(() => model.Email)"/>
+                            <MudTextField Label="Password" Class="mt-3" @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password"/>
                         </MudCardContent>
                         <MudCardActions>
                             <MudButton Class="ml-2 p-2" ButtonType="ButtonType.Submit" Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Login">Login</MudButton>
@@ -65,7 +63,6 @@
         public string ?Email { get; set; }
 
         [Required]
-        [StringLength(30, ErrorMessage = "Password must be at least 8 characters long.", MinimumLength = 8)]
         public string ?Password { get; set; }
 
     }
