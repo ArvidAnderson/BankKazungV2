@@ -1,13 +1,15 @@
 ﻿@page "/about"
 
-<MudContainer>
+<MudContainer Class="mt-5">
     <MudCard>
+        <MudCardHeader>
+            <MudText Typo="Typo.h6">Thanks for trying BankKazungV2</MudText>
+        </MudCardHeader>
         <MudCardContent>
-            <MudText>Thanks for trying BankKazungV2</MudText>
-            <MudText Typo="Typo.body2">The quick, brown fox jumps over a lazy dog.</MudText>
+            <MudText Typo="Typo.body2">Created as a demo for showing how Blazor Webassembly with Asp.Net Web Api and Entity Framework as a stack could work.</MudText>
         </MudCardContent>
         <MudCardActions>
-            <MudButton Variant="Variant.Text" Color="Color.Primary">View Source Code</MudButton>
+            <MudButton Link="https://github.com/ArvidAnderson/BankKazungV2" Variant="Variant.Text" Color="Color.Primary">View Source Code</MudButton>
         </MudCardActions>
     </MudCard>
 </MudContainer>

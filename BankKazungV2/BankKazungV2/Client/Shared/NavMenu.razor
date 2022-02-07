@@ -1,12 +1,19 @@
 ﻿<AuthorizeView Context="Auth">
     <MudNavMenu>
         <div class="p-3 d-flex justify-content-center align-items-center">
-            <MudAvatar Size="Size.Large" Color="Color.Primary">A</MudAvatar>
-        </div>
-        <MudNavLink Href="/home" Match="NavLinkMatch.All">Home</MudNavLink>
+            @if(Auth.User.Claims.Where(c => c.Type  == "FirstName").FirstOrDefault().Value[0] != null)
+            {
+               <MudAvatar Size="Size.Large" Color="Color.Primary">@Auth.User.Claims.Where(c => c.Type  == "FirstName").FirstOrDefault().Value[0]</MudAvatar> 
+            }
+        </div> 
+        <MudNavLink Href="/overview" Match="NavLinkMatch.All">Overview</MudNavLink>
         <MudNavLink Href="/accounts" Match="NavLinkMatch.Prefix">Accounts</MudNavLink>
         <MudNavLink Href="/cards" Match="NavLinkMatch.Prefix">Cards</MudNavLink>
         <MudNavLink Href="/transactions" Match="NavLinkMatch.Prefix">Transactions</MudNavLink>
         <MudNavLink Href="/about"  Match="NavLinkMatch.Prefix">About</MudNavLink>
     </MudNavMenu>
 </AuthorizeView>
+
+@code {
+
+}
