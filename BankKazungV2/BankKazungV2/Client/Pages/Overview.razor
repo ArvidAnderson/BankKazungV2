@@ -5,108 +5,58 @@
 @using BankKazungV2.Shared.Models
 
 <AuthorizeView Context="Auth">
-    <div class="container">
-        <div class="alert alert-secondary">
-            <h5>Welcome {FirstName} {LastName}</h5>
-        </div>
-    </div>
-    <div class="m-3"></div>
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h4>Accounts</h4>
-            </div>
-            <div class="card-body">
-                @if(accountsLoading == true)
+    <!-- Accounts -->
+    <MudContainer Class="mt-5">
+        <MudPaper Elevation="3" Class="mb-5 p-3">
+            <MudText Typo="Typo.h4">Accounts</MudText>
+        </MudPaper>
+        <MudGrid>
+            @if(accounts != null)
+            {
+                @foreach (var account in accounts)
                 {
-                    <div class="container-fluid d-flex align-items-center justify-content-center">
-                        <p>Loading...</p>
-                    </div>
+                    <MudItem xs="12" sm="6" md="3">
+                        <MudPaper Elevation="3">
+                            <MudCard>
+                                <MudCardHeader Class="mud-theme-primary">
+                                    <MudText Typo="Typo.h5">@account.Name</MudText>
+                                </MudCardHeader>
+                                <MudCardContent>
+                                    <MudText>@account.Balance</MudText>
+                                </MudCardContent>
+                            </MudCard>
+                        </MudPaper>
+                    </MudItem>   
                 }
-                @if(accounts == null && accountsLoading == false)
+            }
+        </MudGrid>
+    </MudContainer>
+    <!-- Cards -->
+    <MudContainer Class="mt-5">
+        <MudPaper Elevation="3" Class="mb-5 p-3">
+            <MudText Typo="Typo.h4">Cards</MudText>
+        </MudPaper>
+        <MudGrid>
+            @if(cards != null)
+            {
+                @foreach (var card in cards)
                 {
-                    <div class="container-fluid d-flex align-items-center justify-content-center">
-                        <p>Error</p>
-                    </div>                    
-                } 
-                @if(accounts != null && accountsLoading == false)
-                {
-                    <table class="table table-hover">
-                        <thead class="">
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Balance</th>
-                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var account in accounts)
-                            {
-                                <tr @onclick="(() => ViewAccount(account.AccountID))">
-                                    <td>@account.Name</td>
-                                    <td>@account.Balance</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>   
+                    <MudItem xs="12" sm="6" md="3">
+                        <MudPaper Elevation="3">
+                            <MudCard>
+                                <MudCardHeader Class="mud-theme-secondary">
+                                    <MudText Typo="Typo.h5">@card.Name</MudText>
+                                </MudCardHeader>
+                                <MudCardContent>
+                                    <MudText>@card.Balance</MudText>
+                                </MudCardContent>
+                            </MudCard>
+                        </MudPaper>
+                    </MudItem>   
                 }
-            </div>
-        </div>
-    </div>
-    <div class="m-3"></div>
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h4>Cards</h4>
-            </div>
-            <div class="card-body">
-                <div class="card">
-                    <div class="card-body">
-                        @if(cardsLoading == true)
-                        {
-                            <div class="container-fluid d-flex align-items-center justify-content-center">
-                                <p>Loading...</p>
-                            </div>
-                        }
-                        @if(cards == null && cardsLoading == false)
-                        {
-                            <div class="container-fluid d-flex align-items-center justify-content-center">
-                                <p>Error</p>
-                            </div>                            
-                        }
-                        @if(cards != null && cardsLoading == false)
-                        {
-                            <div class="row">
-                                @foreach (var card in cards)
-                                {
-                                    <div @onclick="(() => ViewCard(card.CardID))" class="col-sm my-2">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h5>@card.Name</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <p>@card.Type</p>
-                                                @if(card.Type == CardTypes.Credit)
-                                                {
-                                                    <span>@card.CreditLimit</span>
-                                                }
-                                                @if(card.Type == CardTypes.Debit)
-                                                {
-                                                    <span>@card.Balance</span> 
-                                                }
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div> 
+            }
+        </MudGrid>
+    </MudContainer>
 </AuthorizeView>  
 
 @code {
@@ -120,24 +70,13 @@
     {
         try
         {
-            accounts = await Http.GetFromJsonAsync<Account[]>("api/Account/jwt/get/accounts");
-            accountsLoading = false;
-        } catch
-        {
-            Console.WriteLine("Error Getting Accounts");
-            accountsLoading = false;
+            accounts = await Http.GetFromJsonAsync<Account[]>("api/account/all");
+            cards = await Http.GetFromJsonAsync<Card[]>("api/card/all");   
         }
-
-        try
+        catch
         {
-            cards = await Http.GetFromJsonAsync<Card[]>("api/Card/jwt/get/cards");
-            cardsLoading = false;
-        } catch
-        {
-            Console.WriteLine("Error Getting Cards");
-            cardsLoading = false;
+            
         }
-
     }
 
     private void ViewAccount(int _accountID)

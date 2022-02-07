@@ -1,16 +1,16 @@
 ﻿<AuthorizeView Context="Auth">
     <MudNavMenu>
-        <div class="p-3 d-flex justify-content-center align-items-center">
+        <MudPaper Elevation="0" class="p-3 d-flex justify-content-center align-items-center">
             @if(Auth.User.Claims.Where(c => c.Type  == "FirstName").FirstOrDefault().Value[0] != null)
             {
-               <MudAvatar Size="Size.Large" Color="Color.Primary">@Auth.User.Claims.Where(c => c.Type  == "FirstName").FirstOrDefault().Value[0]</MudAvatar> 
+               <MudAvatar Size="Size.Large" Color="Color.Primary">@Auth.User.Claims.Where(c => c.Type  == "FirstName").FirstOrDefault().Value[0]</MudAvatar>
             }
-        </div> 
-        <MudNavLink Href="/overview" Match="NavLinkMatch.All">Overview</MudNavLink>
-        <MudNavLink Href="/accounts" Match="NavLinkMatch.Prefix">Accounts</MudNavLink>
-        <MudNavLink Href="/cards" Match="NavLinkMatch.Prefix">Cards</MudNavLink>
-        <MudNavLink Href="/transactions" Match="NavLinkMatch.Prefix">Transactions</MudNavLink>
-        <MudNavLink Href="/about"  Match="NavLinkMatch.Prefix">About</MudNavLink>
+        </MudPaper>
+        <MudNavLink Href="/overview" Icon="@Icons.Filled.Dashboard" Match="NavLinkMatch.All">Overview</MudNavLink>
+        <MudNavLink Href="/accounts" Icon="@Icons.Filled.AccountBalance" Match="NavLinkMatch.Prefix">Accounts</MudNavLink>
+        <MudNavLink Href="/cards" Icon="@Icons.Filled.CreditCard" Match="NavLinkMatch.Prefix">Cards</MudNavLink>
+        <MudNavLink Href="/transactions" Icon="@Icons.Filled.ListAlt" Match="NavLinkMatch.Prefix">Transactions</MudNavLink>
+        <MudNavLink Href="/about" Icon="@Icons.Filled.Info" Match="NavLinkMatch.Prefix">About</MudNavLink>
     </MudNavMenu>
 </AuthorizeView>
 
