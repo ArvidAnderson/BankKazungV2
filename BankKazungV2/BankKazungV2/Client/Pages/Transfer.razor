@@ -1,0 +1,17 @@
+﻿@page "/transfer"
+@attribute [Authorize]
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<AuthorizeView Context="Auth">
+    <!-- Transfer -->
+    <MudContainer Class="mt-5">
+        <MudPaper Elevation="3" Class="mb-5 p-3">
+            <MudText Typo="Typo.h4">Transfer</MudText>
+        </MudPaper>
+    </MudContainer>
+</AuthorizeView>
+
+@code {
+
+}
