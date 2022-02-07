@@ -1,6 +1,7 @@
 ﻿@inherits LayoutComponentBase
-
-<MudThemeProvider />
+@inject ILocalStorageService LocalStorage
+<PageTitle>BankKazungV2</PageTitle>
+<MudThemeProvider @bind-IsDarkMode="@DarkModeActive" Theme="DefaultTheme"/>
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -8,6 +9,10 @@
     <MudAppBar>
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
         BankKazungV2
+        <MudSpacer/>
+        <MudToggleIconButton Toggled="@DarkModeActive" ToggledChanged="SetDarkMode"
+                        Icon="@Icons.Material.Filled.DarkMode" Color="@Color.Warning" Title="Off" 
+                        ToggledIcon="@Icons.Material.Filled.WbSunny" ToggledColor="@Color.Success" ToggledTitle="On" />
     </MudAppBar>
     <MudDrawer @bind-Open="@_drawerOpen">
         <NavMenu/>
@@ -17,10 +22,42 @@
     </MudMainContent>
 </MudLayout>
 @code {
+    MudTheme DefaultTheme = new();
+    bool DarkModeActive;
     bool _drawerOpen = true;
 
     void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var containsTheme = await LocalStorage.ContainKeyAsync("theme");
+        if(containsTheme)
+        {
+            var currentTheme = await LocalStorage.GetItemAsStringAsync("theme");
+            if(currentTheme == "Dark")
+            {
+                DarkModeActive = true;
+            }
+            if(currentTheme == "Light")
+            {
+                DarkModeActive = false;
+            }
+        }
+    }
+
+    public async Task SetDarkMode(bool switchState)
+    {
+        DarkModeActive = !DarkModeActive;
+        if(DarkModeActive == true)
+        {
+            await LocalStorage.SetItemAsStringAsync("theme", "Dark");
+        }
+        if(DarkModeActive == false)
+        {
+            await LocalStorage.SetItemAsStringAsync("theme", "Light");
+        }
     }
 }

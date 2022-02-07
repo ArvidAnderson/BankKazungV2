@@ -30,20 +30,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWJvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arvid/Documents/GitHub/BankKazungV2/BankKazungV2/BankKazungV2/Client/Pages/Account\{ID\}.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudHtJRH0ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/arvid/Documents/GitHub/BankKazungV2/BankKazungV2/BankKazungV2/Client/Pages/AdminUsers.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5Vc2Vycy5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/arvid/Documents/GitHub/BankKazungV2/BankKazungV2/BankKazungV2/Client/Pages/Authorization.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aG9yaXphdGlvbi5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/arvid/Documents/GitHub/BankKazungV2/BankKazungV2/BankKazungV2/Client/Pages/EditUser.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFVzZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/arvid/Documents/GitHub/BankKazungV2/BankKazungV2/BankKazungV2/Client/Pages/Index.razor]

@@ -1,9 +1,26 @@
 ﻿@page "/"
+@layout AuthenticationLayout
+@inject AuthenticationStateProvider AuthStateProvider
+@inject NavigationManager NavigationManager
 
-<PageTitle>Index</PageTitle>
+<h1>BankKazungV2</h1>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        bool userAuthenticated = authState.User.Identity.IsAuthenticated;
+        if(userAuthenticated)
+        {
+            Console.WriteLine("User is Authenticated");
+            NavigationManager.NavigateTo("/overview");
+            StateHasChanged();
+        }
+        if(!userAuthenticated)
+        {
+            Console.WriteLine("User is not Authenticated");
+            NavigationManager.NavigateTo("/authentication/login");
+            StateHasChanged();
+        }
+    }
+}

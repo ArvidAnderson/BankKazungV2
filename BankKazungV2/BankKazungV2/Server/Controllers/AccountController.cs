@@ -48,8 +48,6 @@ namespace BankKazungV2.Server.Controllers
 
             List<Account> UserAccounts = await _context.Accounts.Where(u => u.UserID == UserID).ToListAsync();
 
-            if(UserAccounts.Count == 0) { return BadRequest("Accounts Not Found"); }
-
             return Ok(UserAccounts);
         }
 

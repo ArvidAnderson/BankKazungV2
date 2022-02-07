@@ -48,8 +48,6 @@ namespace BankKazungV2.Server.Controllers
 
             List<Card> UserCards = await _context.Cards.Where(u => u.UserID == UserID).ToListAsync();
 
-            if (UserCards.Count == 0) { return BadRequest("Cards Not Found"); }
-
             return Ok(UserCards);
         }
 
