@@ -3,6 +3,7 @@
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
 @using BankKazungV2.Shared.Models
+@using BankKazungV2.Client.Components
 
 <AuthorizeView Context="Auth">
     <!-- Accounts -->
@@ -11,24 +12,44 @@
             <MudText Typo="Typo.h4">Accounts</MudText>
         </MudPaper>
         <MudGrid>
-            @if(accounts != null)
-            {
-                @foreach (var account in accounts)
-                {
-                    <MudItem xs="12" sm="6" md="3">
-                        <MudPaper Elevation="3">
-                            <MudCard>
-                                <MudCardHeader Class="mud-theme-primary">
-                                    <MudText Typo="Typo.h5">@account.Name</MudText>
-                                </MudCardHeader>
-                                <MudCardContent>
-                                    <MudText>Balance: @account.Balance</MudText>
-                                </MudCardContent>
-                            </MudCard>
-                        </MudPaper>
-                    </MudItem>   
-                }
-            }
+            <ErrorBoundary>
+                <ChildContent>
+                    @if(accountsLoading.Equals(true))
+                    {
+                        <OverviewSkeleton/>
+                        <OverviewSkeleton/>
+                    }
+                    @if(accountsLoading.Equals(false) && !accounts.Equals(null) && accounts.Count().Equals(0))
+                    {
+                        <MudItem xs="12">
+                            <MudAlert Severity="Severity.Info" Variant="Variant.Filled">You currently have no accounts!</MudAlert>
+                        </MudItem>
+                    }
+                    @if(accountsLoading.Equals(false) && !accounts.Equals(null) && !accounts.Count().Equals(0))
+                    {
+                        @foreach (var account in accounts)
+                        {
+                            <MudItem xs="12" sm="6" md="3">
+                                <MudPaper Elevation="3">
+                                    <MudCard>
+                                        <MudCardHeader Class="mud-theme-primary">
+                                            <MudText Typo="Typo.h5">@account.Name</MudText>
+                                        </MudCardHeader>
+                                        <MudCardContent>
+                                            <MudText>Balance: @account.Balance</MudText>
+                                        </MudCardContent>
+                                    </MudCard>
+                                </MudPaper>
+                            </MudItem>   
+                        }
+                    }
+                </ChildContent>
+                <ErrorContent>
+                    <MudItem xs="12">
+                         <MudAlert Severity="Severity.Error" Variant="Variant.Filled">Error retreving accounts!</MudAlert>
+                    </MudItem>
+                </ErrorContent>
+            </ErrorBoundary>
         </MudGrid>
     </MudContainer>
     <!-- Cards -->
@@ -37,24 +58,44 @@
             <MudText Typo="Typo.h4">Cards</MudText>
         </MudPaper>
         <MudGrid>
-            @if(cards != null)
-            {
-                @foreach (var card in cards)
-                {
-                    <MudItem xs="12" sm="6" md="3">
-                        <MudPaper Elevation="3">
-                            <MudCard>
-                                <MudCardHeader Class="mud-theme-secondary">
-                                    <MudText Typo="Typo.h5">@card.Name</MudText>
-                                </MudCardHeader>
-                                <MudCardContent>
-                                    <MudText>@card.Balance</MudText>
-                                </MudCardContent>
-                            </MudCard>
-                        </MudPaper>
-                    </MudItem>   
-                }
-            }
+            <ErrorBoundary>
+                <ChildContent>
+                    @if(cardsLoading.Equals(true))
+                    {
+                        <OverviewSkeleton/>
+                        <OverviewSkeleton/>
+                    }
+                    @if(cardsLoading.Equals(false) && !cards.Equals(null) && cards.Count().Equals(0))
+                    {
+                        <MudItem xs="12">
+                            <MudAlert Severity="Severity.Info" Variant="Variant.Filled">You currently have no cards!</MudAlert>
+                        </MudItem>
+                    }
+                    @if(cardsLoading.Equals(false) && !cards.Equals(null) && !cards.Count().Equals(0))
+                    {
+                        @foreach (var card in cards)
+                        {
+                            <MudItem xs="12" sm="6" md="3">
+                                <MudPaper Elevation="3">
+                                    <MudCard>
+                                        <MudCardHeader Class="mud-theme-secondary">
+                                            <MudText Typo="Typo.h5">@card.Name</MudText>
+                                        </MudCardHeader>
+                                        <MudCardContent>
+                                            <MudText>@card.Balance</MudText>
+                                        </MudCardContent>
+                                    </MudCard>
+                                </MudPaper>
+                            </MudItem>   
+                        }
+                    }
+                </ChildContent>
+                <ErrorContent>
+                    <MudItem xs="12">
+                         <MudAlert Severity="Severity.Error" Variant="Variant.Filled">Error retreving cards!</MudAlert>
+                    </MudItem>
+                </ErrorContent>
+            </ErrorBoundary>
         </MudGrid>
     </MudContainer>
 </AuthorizeView>  
@@ -62,20 +103,40 @@
 @code {
     private Account[]? accounts;
     bool accountsLoading = true;
+    bool accountsError = false;
 
     private Card[]? cards;
     bool cardsLoading = true;
+    bool cardsError = false;
 
     protected override async Task OnInitializedAsync()
     {
+        //Load Accounts
         try
         {
-            accounts = await Http.GetFromJsonAsync<Account[]>("api/account/all");
-            cards = await Http.GetFromJsonAsync<Card[]>("api/card/all");   
+            accounts = await Http.GetFromJsonAsync<Account[]>("api/account/all");   
         }
         catch
         {
-            
+            accounts = null;
+        }
+        finally
+        {
+            accountsLoading = false;
+        }
+
+        //Load Cards
+        try
+        {
+            cards = await Http.GetFromJsonAsync<Card[]>("api/card/all");
+        }
+        catch
+        {
+            cards = null;
+        }
+        finally
+        {
+            cardsLoading = false;
         }
     }
 

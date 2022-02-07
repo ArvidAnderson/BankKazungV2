@@ -26,6 +26,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBbHJlYWR5QXV0aGVudGljYXRlZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/arvid/Documents/GitHub/BankKazungV2/BankKazungV2/BankKazungV2/Client/Components/OverviewSkeleton.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xPdmVydmlld1NrZWxldG9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/arvid/Documents/GitHub/BankKazungV2/BankKazungV2/BankKazungV2/Client/Pages/About.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWJvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
