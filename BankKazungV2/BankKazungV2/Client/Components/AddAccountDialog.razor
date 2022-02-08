@@ -1,0 +1,28 @@
+﻿@inject HttpClient http
+
+<MudDialog>
+    <DialogContent>
+        <MudTextField Label="New account name" @bind-Value="NewAccountName"/>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="Submit">Ok</MudButton>
+    </DialogActions>
+</MudDialog>
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    public string NewAccountName { get; set; }
+
+    private void Submit()
+    {
+        AddAccount();
+        MudDialog.Close(DialogResult.Ok(true));
+    }
+    void Cancel() => MudDialog.Cancel();
+
+    private async Task AddAccount()
+    {
+        var AddAccount = await http.PostAsJsonAsync($"api/account/add/{NewAccountName}", NewAccountName);
+    }
+}

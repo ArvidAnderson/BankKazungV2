@@ -2,14 +2,16 @@
 @attribute [Authorize]
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
+@inject IDialogService DialogService
 @using BankKazungV2.Shared.Models
 @using BankKazungV2.Client.Components
 
 <AuthorizeView Context="Auth">
     <!-- Accounts -->
     <MudContainer Class="mt-5">
-        <MudPaper Elevation="3" Class="mb-5 p-3">
+        <MudPaper Elevation="3" Class="mb-5 p-3 d-flex justify-content-between">
             <MudText Typo="Typo.h4">Accounts</MudText>
+            <MudIconButton OnClick="AddAccountDialog" Size="Size.Medium" Icon="@Icons.Material.Filled.AddCircle"></MudIconButton>
         </MudPaper>
         <MudGrid>
             <ErrorBoundary>
@@ -54,8 +56,9 @@
     </MudContainer>
     <!-- Cards -->
     <MudContainer Class="mt-5">
-        <MudPaper Elevation="3" Class="mb-5 p-3">
+        <MudPaper Elevation="3" Class="mb-5 p-3 d-flex justify-content-between">
             <MudText Typo="Typo.h4">Cards</MudText>
+            <MudIconButton Size="Size.Medium" Icon="@Icons.Material.Filled.AddCircle"></MudIconButton>
         </MudPaper>
         <MudGrid>
             <ErrorBoundary>
@@ -150,6 +153,18 @@
     {
         Console.WriteLine($"View Card {_cardID}");
         NavigationManager.NavigateTo($"/card/{_cardID}");
+    }
+
+    private async Task AddAccountDialog()
+    {
+        var options = new DialogOptions { CloseOnEscapeKey = true };
+        var dialog = DialogService.Show<AddAccountDialog>("Add Account", options);
+        var result = await dialog.Result;
+        if(!result.Cancelled)
+        {
+            Console.WriteLine("Adding Account");
+            accounts = await Http.GetFromJsonAsync<Account[]>("api/account/all");
+        }
     }
 
 }
