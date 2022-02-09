@@ -31,8 +31,8 @@
                     {
                         @foreach (var account in accounts)
                         {
-                            <MudItem xs="12" sm="6" md="3">
-                                <MudPaper Elevation="3">
+                            <MudItem @onclick="(() => ViewAccount(account.AccountID))" xs="12" sm="6" md="3">
+                                <MudPaper Class="cursor-pointer" Elevation="3">
                                     <MudCard>
                                         <MudCardHeader Class="mud-theme-primary">
                                             <MudText Typo="Typo.h5">@account.Name</MudText>
@@ -157,13 +157,21 @@
 
     private async Task AddAccountDialog()
     {
-        var options = new DialogOptions { CloseOnEscapeKey = true };
-        var dialog = DialogService.Show<AddAccountDialog>("Add Account", options);
+        var options = new DialogOptions { CloseOnEscapeKey = true};
+        var dialog = DialogService.Show<AddAccountDialog>("New Account", options);
         var result = await dialog.Result;
         if(!result.Cancelled)
         {
             Console.WriteLine("Adding Account");
-            accounts = await Http.GetFromJsonAsync<Account[]>("api/account/all");
+            await Task.Delay(1500);
+            try
+            {
+                accounts = await Http.GetFromJsonAsync<Account[]>("api/account/all");   
+            }
+            catch
+            {
+                accounts = null;
+            }
         }
     }
 
